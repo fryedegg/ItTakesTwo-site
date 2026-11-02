@@ -4,16 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#07071a">
 <title>ItTakesTwo</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%238e2b25'/><text x='16' y='23' font-family='Georgia,serif' font-size='18' font-weight='700' text-anchor='middle' fill='white'>II</text></svg>">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23090920'/><circle cx='11' cy='16' r='5' fill='%236ee7ff'/><circle cx='22' cy='16' r='4' fill='%23ff8ad8'/></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<canvas id="stars" aria-hidden="true"></canvas>
 <header class="top">
   <div class="top-row">
-    <a class="brand" href="#tonight">ItTakesTwo</a>
-    <input id="search" type="search" placeholder="Search the guide" aria-label="Search the guide">
+    <a class="brand" href="#tonight"><span class="brand-stars" aria-hidden="true"><i></i><i></i></span>ItTakesTwo</a>
+    <input id="search" type="search" placeholder="Search" aria-label="Search the guide">
   </div>
   <nav aria-label="Sections">
     <a href="#tonight">Tonight</a>
@@ -34,15 +36,40 @@
 
 <!-- TONIGHT -->
 <section id="tonight" class="view" data-src="r">
-  <div class="hero">
-    <p class="kicker">World of Warcraft: Forever · 1–60 · Revision 2 · Nov 2, 2026</p>
-    <h1>Tank together. Heal together. Make the evening count.</h1>
-    <p class="lede">Marc: Troll Warrior. Nikki: Tauren Shaman. Enter your levels and the page shows tonight's options.</p>
+  <div class="hero hero-main">
+    <div>
+      <p class="kicker">World of Warcraft: Forever · 1–60 · Revision 2</p>
+      <h1>Tank together. Heal together. Make the evening count.</h1>
+      <p class="lede">Marc, Troll Warrior. Nicky, Tauren Shaman. Two stars, one orbit. Set your levels and see tonight's plan.</p>
+    </div>
+    <div class="orbit" aria-hidden="true"><span class="ring"></span><span class="spin"><i class="star marc"></i><i class="star nicky"></i></span></div>
   </div>
 
   <div class="panel picker">
-    <label>Marc <input id="lvl-marc" type="number" min="1" max="60" inputmode="numeric"></label>
-    <label>Nikki <input id="lvl-nikki" type="number" min="1" max="60" inputmode="numeric"></label>
+    <div class="lvl marc">
+      <label for="lvl-marc">Marc</label>
+      <div class="stepper">
+        <button type="button" data-step="-1" data-for="lvl-marc" aria-label="Marc level down">−</button>
+        <input id="lvl-marc" type="number" min="1" max="60" inputmode="numeric" placeholder="–">
+        <button type="button" data-step="1" data-for="lvl-marc" aria-label="Marc level up">+</button>
+      </div>
+    </div>
+    <div class="lvl nicky">
+      <label for="lvl-nicky">Nicky</label>
+      <div class="stepper">
+        <button type="button" data-step="-1" data-for="lvl-nicky" aria-label="Nicky level down">−</button>
+        <input id="lvl-nicky" type="number" min="1" max="60" inputmode="numeric" placeholder="–">
+        <button type="button" data-step="1" data-for="lvl-nicky" aria-label="Nicky level up">+</button>
+      </div>
+    </div>
+    <div class="lvl both">
+      <label for="lvl-both">Both <small>same level</small></label>
+      <div class="stepper">
+        <button type="button" data-step="-1" data-for="lvl-both" aria-label="Both level down">−</button>
+        <input id="lvl-both" type="number" min="1" max="60" inputmode="numeric" placeholder="–">
+        <button type="button" data-step="1" data-for="lvl-both" aria-label="Both level up">+</button>
+      </div>
+    </div>
     <p class="muted" id="lvl-note"></p>
   </div>
   <div id="tonight-out"></div>
@@ -53,9 +80,9 @@
       <li>Respec Marc to Arms at 37 for Ravager; take dual spec at 40 (Arms open world, Protection for dungeons). Prot's new rage and damage talents need a shield. {F} {J}</li>
       <li>Grind with Ravager only when rested and Well Fed. Both apply to kills only, so a cleave session doubles their value. {F}</li>
       <li>Pull yellow and orange mobs, never green. Green mobs now give 4–20% less XP than in Classic, and Blizzard says that is intended. {F}</li>
-      <li>Ravager slows Marc by 80% while it spins (per Forever item data). Gather the pack before the proc; Nikki's Earthbind keeps it in range. {F} {T}</li>
-      <li>Legacy has a 16-point per-character spend cap at launch. Well Rested 5 + Talented 5 leaves 6. Put them in Thrill of Adventure 5 (heal and mana on open-world killing blows) + Frequent Flier. {F} {J}</li>
-      <li>Windfury is now a party totem buff, not a Shaman weapon imbue. Earth Shock now also taunts and interrupts, so Nikki can peel mobs off herself. {F}</li>
+      <li>Ravager slows Marc by 80% while it spins (per Forever item data). Gather the pack before the proc; Nicky's Earthbind keeps it in range. {F} {T}</li>
+      <li>Legacy has a 16-point per-character spend cap at launch. Well Rested 5 + Talented 5 leaves 6. Marc: Thrill of Adventure 5 (heal and mana on open-world killing blows) + Frequent Flier. <a href="#xp/b-spend">Nicky's plan differs.</a> {F} {J}</li>
+      <li>Windfury is now a party totem buff, not a Shaman weapon imbue. Earth Shock now also taunts and interrupts, so Nicky can peel mobs off herself. {F}</li>
       <li>Add Riverglades (Rog'mar, about 36–44) and look at Shen'dralas (about 40–50). Both are new zones the route treats as optional or misses entirely. {F} <span class="muted">Level bands disputed.</span></li>
       <li>Budget 100g for riding at 40 (includes the mount) plus an unknown dual-spec fee. There is no group finder and there are no summoning stones, so walk-in travel is real time. {F}</li>
     </ol>
@@ -67,15 +94,41 @@
       <li><strong>Opens Nov 4, 3:00 pm Pacific (23:00 UTC).</strong> Expect crowded starting zones on day one. Levelling apart to 10 avoids fighting for tags as a pair. {F} [1,27]</li>
       <li><strong>No realm list.</strong> You choose a ruleset (Normal, PvP, RP, RP-PvP), and each ruleset is one world split by layering. <strong>Both of you must pick the same ruleset</strong>; transfers between rulesets are not offered. {F} [27]</li>
       <li><strong>No group finder and no summoning stones.</strong> The LFG board exists, but someone walks to every entrance. Ask recruits to meet at the door. {F} [28]</li>
-      <li><strong>Troll racial, Rapid Regeneration:</strong> a 6-second channel that heals 50% of health, broken by damage or movement. It is free downtime for Marc between pulls and saves Nikki mana. Bow and Throwing specializations are gone. {F} [29,30]</li>
+      <li><strong>Troll racial, Rapid Regeneration:</strong> a 6-second channel that heals 50% of health, broken by damage or movement. It is free downtime for Marc between pulls and saves Nicky mana. Bow and Throwing specializations are gone. {F} [29,30]</li>
     </ul>
-    <h3>Day-one tests before trusting the cleave plan</h3>
-    <ul class="checks">
-      <li>Does Thunder Clap, a stance change or a shout cancel the spin? (Classic players reported that stance changes and casts did.)</li>
-      <li>Do Windfury extra attacks roll the Ravager proc?</li>
-      <li>Is the spin capped at a target count like Thunder Clap and Whirlwind (4)?</li>
-      <li>Record kills, time and XP for 15 minutes on one camp, then compare with 15 minutes of nearby questing. Keep whichever is higher.</li>
-    </ul>
+  </article>
+
+  <article class="block" id="b-tests">
+    <h2>Day-one tests for the cleave plan</h2>
+    <p>Here's what the sources and Marc's experience say so far. Forever hasn't launched, so each one still gets a quick check on the first real pull.</p>
+    <div class="qa">
+      <h3>Does Thunder Clap, a stance change or a shout cancel the spin?</h3>
+      <p class="verdict open">No concrete answer found</p>
+      <p>Nothing found tests these three directly. The Classic-era <a href="https://warcraft.wiki.gg/wiki/Ravager_(axe)" target="_blank" rel="noopener noreferrer">Warcraft Wiki page</a> says the proc can be countered by cancelling its Bladestorm buff, while a <a href="https://www.engadget.com/2006-12-15-phat-loot-phriday-the-ravager.html" target="_blank" rel="noopener noreferrer">2006 player write-up</a> says you can't turn it off. Until you've tested it, assume pressing things mid-spin may not be safe.</p>
+      <ul class="checks"><li>Press Thunder Clap mid-spin, then a shout, then a stance change. Note which ones end the spin.</li><li>Try right-clicking the Bladestorm buff to cancel it.</li></ul>
+    </div>
+    <div class="qa">
+      <h3>Do Windfury extra attacks roll the Ravager proc?</h3>
+      <p class="verdict likely">Likely yes</p>
+      <p>Marc remembers it working, and a Classic player who leveled with the axe <a href="https://us.forums.blizzard.com/en/wow/t/can-ravager-proc-enchants/525729" target="_blank" rel="noopener noreferrer">says the same</a>. Reports disagree on whether the spin's own hits trigger Windfury. Forever made Windfury a party totem buff, so this could have changed.</p>
+      <ul class="checks"><li>Stand in Nicky's Windfury Totem and watch for a spin starting right after an extra attack.</li></ul>
+    </div>
+    <div class="qa">
+      <h3>Is the spin capped at a target count?</h3>
+      <p class="verdict likely">Marc's call: no cap</p>
+      <p>Marc's experience is that everything in melee range gets hit. The tooltip says all nearby enemies, a <a href="https://www.engadget.com/2006-12-15-phat-loot-phriday-the-ravager.html" target="_blank" rel="noopener noreferrer">2006 player write-up</a> agrees, and no source gives a limit. Whirlwind and Thunder Clap's limit of 4 doesn't appear to apply to it.</p>
+      <ul class="checks"><li>On a pull of 5 or more, confirm in the combat log that more than 4 targets take each spin tick.</li></ul>
+    </div>
+    <div class="qa">
+      <h3>Camp or questing: which pays more?</h3>
+      <p class="verdict open">Needs the live game</p>
+      <p>Nobody can answer this until launch. Record 15 minutes on one camp and 15 minutes of nearby questing, then keep whichever is higher.</p>
+      <div class="xp-test">
+        <label for="xp-camp">Camp XP in 15 min<input id="xp-camp" type="number" min="0" inputmode="numeric"></label>
+        <label for="xp-quest">Questing XP in 15 min<input id="xp-quest" type="number" min="0" inputmode="numeric"></label>
+        <p id="xp-result" class="xp-result" role="status"></p>
+      </div>
+    </div>
   </article>
 
   <article class="block" id="b-session" data-p="3" data-src="o">
@@ -90,7 +143,7 @@
     </table></div>
     <h3>Thirty-second rule, updated</h3>
     <p>A dungeon visit earns its slot through quests, a class unlock, Legacy credit, or a named item. Mob XP no longer counts as a reason. Open-world kill sessions earn their slot only with a rested bar and food active.</p>
-    <p>If the next activity provides two or more of shared quest progress, a class unlock, a major gear target or Legacy credit, it deserves priority. If it provides one minor upgrade plus long travel, leave it optional. Ravager and Nikki's class weapon package get their own deliberate sessions.</p>
+    <p>If the next activity provides two or more of shared quest progress, a class unlock, a major gear target or Legacy credit, it deserves priority. If it provides one minor upgrade plus long travel, leave it optional. Ravager and Nicky's class weapon package get their own deliberate sessions.</p>
     <h3>Five-minute start</h3>
     <ul class="plain">
       <li>Compare levels, quest log and objectives. Pick one goal each; use the same active quest step where possible.</li>
@@ -105,11 +158,11 @@
     </ul>
     <p class="muted">Time estimates are budgets, not measured Forever clear times. Queue, travel, launch congestion, skill and group composition can change them. If a group is not forming promptly, keep questing while recruiting.</p>
     <h3>Before the first shared evening</h3>
-    <p>Your races begin far apart. Recommended: finish racial starter areas through roughly 10 separately, with Nikki completing her Tauren Earth quest before leaving Mulgore. Meet at Crossroads. Moving one character earlier is possible, but the travel and different class quests make it less efficient.</p>
+    <p>Your races begin far apart. Recommended: finish racial starter areas through roughly 10 separately, with Nicky completing her Tauren Earth quest before leaving Mulgore. Meet at Crossroads. Moving one character earlier is possible, but the travel and different class quests make it less efficient.</p>
     <p>Acquire flight paths in Thunder Bluff, Crossroads, Ratchet and Orgrimmar when your route passes them. Later add Camp Taurajo, Sun Rock Retreat, Splintertree/Zoram'gar, Undercity and Tarren Mill. Set your hearth to the current quest hub and update it when changing regions.</p>
   </article>
 
-  <p class="muted evidence">Most sources are beta-era (level capped at 30 for most of testing). Anything above level 30 is beta data at best; nobody has launch-tested it. See the <a href="#changes/b-tags">evidence tags</a>. <a href="guide/Horde_Duo_Leveling_Guide_1-60_Rev2_Combined.pdf" download>Download the full PDF</a>.</p>
+  <p class="muted evidence">Names in the original PDF still read "Nikki". Most sources are beta-era (level capped at 30 for most of testing). Anything above level 30 is beta data at best; nobody has launch-tested it. See the <a href="#changes/b-tags">evidence tags</a>. <a href="guide/Horde_Duo_Leveling_Guide_1-60_Rev2_Combined.pdf" download>Download the full PDF</a>.</p>
 </section>
 
 <!-- ROUTE -->
@@ -128,17 +181,17 @@
   <article class="block" id="r-1-14" data-p="7">
     <h2>Levels 1–14: meet, unlock, prepare</h2>
     <h3>1–9 · Durotar and Mulgore</h3>
-    <p><strong>Marc:</strong> Valley of Trials → Sen'jin / Razor Hill circuits. <strong>Nikki:</strong> Camp Narache → Bloodhoof Village. Finish the local kill-and-collection bundles together within each area; prioritize compact circuits over isolated long deliveries.</p>
-    <p><strong>At 4:</strong> Nikki completes Call of Earth with Seer Ravenfeather before leaving her starter region. Marc trains Charge/Rend. Around 5, learn professions and Cooking, unlock camps, and get Nikki to Leatherworking 20 for the tent. [4,8,11]</p>
-    <p><strong>Gear:</strong> any affordable current-level weapon helps Marc; a usable one-hander and shield are worth keeping before the tanking unlock. Nikki wants mana stats and a functional melee weapon for low-mana periods, not a pure melee-only set.</p>
+    <p><strong>Marc:</strong> Valley of Trials → Sen'jin / Razor Hill circuits. <strong>Nicky:</strong> Camp Narache → Bloodhoof Village. Finish the local kill-and-collection bundles together within each area; prioritize compact circuits over isolated long deliveries.</p>
+    <p><strong>At 4:</strong> Nicky completes Call of Earth with Seer Ravenfeather before leaving her starter region. Marc trains Charge/Rend. Around 5, learn professions and Cooking, unlock camps, and get Nicky to Leatherworking 20 for the tent. [4,8,11]</p>
+    <p><strong>Gear:</strong> any affordable current-level weapon helps Marc; a usable one-hander and shield are worth keeping before the tanking unlock. Nicky wants mana stats and a functional melee weapon for low-mana periods, not a pure melee-only set.</p>
     <ul class="checks">
       <li>Both have bags, food/drink and hearthstones set. Save materials for the first Legacy craft milestones.</li>
-      <li>Before grouping outside the racial zones: Nikki has Earth Totem; Marc has trained key early skills.</li>
+      <li>Before grouping outside the racial zones: Nicky has Earth Totem; Marc has trained key early skills.</li>
     </ul>
     <h3>10–14 · Crossroads, Ratchet and class unlocks</h3>
     <p><strong>Default quests:</strong> Crossroads supply/threat circuits and the Forgotten Pools storyline; Ratchet's Raptor Horns work prepares Smart Drinks for WC. Open flight paths while moving between hubs.</p>
     <p><strong>Marc at 10:</strong> trainer → Veteran Uzzek at Far Watch Post → Path of Defense in Thunder Ridge → return for Defensive Stance, Taunt and Sunder Armor. Optional Forged Steel weapon follow-up if it improves your current weapon. [10]</p>
-    <p><strong>Nikki at 10:</strong> Fire Totem chain via Kranal Fiss and Telf Joolam; gather its Barrens and Durotar objectives while Marc does his stance work. Do not leave the chain half-finished before the first dungeon. [11]</p>
+    <p><strong>Nicky at 10:</strong> Fire Totem chain via Kranal Fiss and Telf Joolam; gather its Barrens and Durotar objectives while Marc does his stance work. Do not leave the chain half-finished before the first dungeon. [11]</p>
     <p><strong>Dungeon choice:</strong> RFC is the first group option. After both level-10 unlocks, a coordinated 10–12 group can attempt it; treat that as a challenge, not a guaranteed efficient clear. Prefer 13–16 if recruiting strangers. At 14 Marc learns Revenge; 16 brings Shield Block. [8,12]</p>
     <ul class="checks">
       <li>RFC: prep Thrall's Hidden Enemies chain; collect city quests during the shared preparation trip.</li>
@@ -153,15 +206,15 @@
     <h3>15–19 · Barrens → Silverpine</h3>
     <p><strong>Quest focus:</strong> finish the Crossroads pool/Oasis chain far enough to obtain Leaders of the Fang, then WC. Ratchet and the WC entrance cave let you gather several collection objectives before zoning in.</p>
     <p><strong>Dungeon nights:</strong> WC around 17–20; Ruins of Lordaeron 16–19. Use a zeppelin trip to pick up Undercity quests, then quest in Silverpine between group runs. Do not wait until 20 to discover that Ruins quests were never collected.</p>
-    <p><strong>XP priority:</strong> start the Sleeping Bag chain once eligible at 14. For your limited time, complete its travel in linked stages across 15–24. You can rush it sooner as a dedicated travel session; that is the earliest-access choice, not necessarily the fastest immediate leveling.</p>
-    <p><strong>Gear:</strong> Marc: Hammer of Orgrimmar, then Wingblade; Nikki: Crescent Staff or Living Root. Ruins offers new quest/drop options; compare actual caster stats before choosing. At 18, train Tremor Totem and place it before fear/sleep-heavy fights. [12-14,43]</p>
+    <p><strong>XP priority:</strong> start the Sleeping Bag chain once eligible at 14. For your limited time, do its travel in linked stages from 15 on, and leave the Arathi/Thoradin's Wall leg for a 30+ Eastern Kingdoms trip, since guides rate the later Horde legs as harder.</p>
+    <p><strong>Gear:</strong> Marc: Hammer of Orgrimmar, then Wingblade; Nicky: Crescent Staff or Living Root. Ruins offers new quest/drop options; compare actual caster stats before choosing. At 18, train Tremor Totem and place it before fear/sleep-heavy fights. [12-14,43]</p>
     <ul class="checks">
       <li>WC party agrees to the full Naralex/Mutanus finish, not just the four Fang bosses.</li>
       <li>Both loot each required quest item; do not assume kill credit supplies a quest drop.</li>
     </ul>
     <h3>20–24 · Silverpine/Hillsbrad and Ashenvale</h3>
     <p><strong>Default:</strong> Sepulcher/Tarren Mill circuits while grouping for SFK 20–24. Then a Kalimdor block through Stonetalon or Ashenvale for BFD 22–25. Use the Water Totem chain to connect these trips rather than making separate continent crossings.</p>
-    <p><strong>Nikki at 20:</strong> start Call of Water. The chain uses southern Barrens, Tarren Mill, Ashenvale and Silverpine. Finish before relying on water totems in dungeon healing. Train Ghost Wolf, Lesser Healing Wave, Call of the Elements and Totemic Recall. [11,44,45]</p>
+    <p><strong>Nicky at 20:</strong> start Call of Water. The chain uses southern Barrens, Tarren Mill, Ashenvale and Silverpine. Finish before relying on water totems in dungeon healing. Train Ghost Wolf, Lesser Healing Wave, Call of the Elements and Totemic Recall. [11,44,45]</p>
     <p><strong>Marc at 20:</strong> take Speak with Ruga at Camp Taurajo; the opening trial gives Ruga's Bulwark. [10]</p>
     <p><strong>Legacy:</strong> the two level-20 crafting characters can now finish Expert milestones. If the gold/material supply is not ready, continue the main route and use the mixed route later.</p>
     <ul class="checks">
@@ -185,8 +238,8 @@
     </ul>
     <h3>30–34 · Class chains before Razorfen Kraul</h3>
     <p><strong>Marc at 30:</strong> The Islander → The Affray on Fray Island for Berserker Stance. Skip the Whirlwind weapon pre-Ravager unless a group is already there; Cyclonian is a level-40 elite. Start the Brutal Hauberk chain now: Speak with Thun'grim, Brutal Armor, Brutal Hauberk. [10]</p>
-    <p><strong>Nikki at 30:</strong> complete Call of Air in Thousand Needles, then advance The Tempest's Weapons until its RFK objective is active. This is a major healer gear project; do not spend the dungeon boss kill before accepting the relevant step. [11]</p>
-    <p><strong>RFK at 30–33:</strong> collect A Vengeful Fate, Going, Going, Guano!, Blueleaf Tubers, Marc's Brutal Armor objective and Nikki's note objective. Finish the scroll hand-in afterward to prepare Razorfen Downs. [20]</p>
+    <p><strong>Nicky at 30:</strong> complete Call of Air in Thousand Needles, then advance The Tempest's Weapons until its RFK objective is active. This is a major healer gear project; do not spend the dungeon boss kill before accepting the relevant step. [11]</p>
+    <p><strong>RFK at 30–33:</strong> collect A Vengeful Fate, Going, Going, Guano!, Blueleaf Tubers, Marc's Brutal Armor objective and Nicky's note objective. Finish the scroll hand-in afterward to prepare Razorfen Downs. [20]</p>
     <p><strong>Before SM Library:</strong> progress Test of Faith → Test of Endurance → Test of Strength → Test of Lore through its handoffs. Add Compendium of the Fallen from Thunder Bluff. Into the Scarlet Monastery becomes available at 34. [23]</p>
     <ul class="checks">
       <li>At 30, visit both trainers; train the new totem preset if offered and check current ability ranks.</li>
@@ -199,19 +252,19 @@
     <h2>Levels 35–44: Ravager and healer rewards</h2>
     <div class="fix">Revision 2: Riverglades 36–44, riding 100g, dual spec. <a href="#xp/b-zones">New zones</a> · <a href="#ravager/b-spec">Spec plan</a></div>
     <h3>35–39 · Scarlet Monastery priority block</h3>
-    <p><strong>Default quests:</strong> Desolace/Stranglethorn, with Riverglades as a main 37–42 choice next to STV. Choose Dustwallow and Badlands segments that overlap Nikki's Tempest objectives. Get flight paths before a long detour.</p>
+    <p><strong>Default quests:</strong> Desolace/Stranglethorn, with Riverglades as a main 37–42 choice next to STV. Choose Dustwallow and Badlands segments that overlap Nicky's Tempest objectives. Get flight paths before a long detour.</p>
     <p><strong>At 35–36:</strong> complete the Library quest package and loot The Scarlet Key from Doan's chest. At 36, line up the Armory party and make sure axe skill is ready. <strong>At 37, farm Herod until Ravager drops</strong>, within the session time you choose. A ready group can also bank it slightly earlier. See <a href="#ravager">Ravager</a>. [23,24,46]</p>
-    <p><strong>Nikki's equivalent priority:</strong> finish the Tempest chain's four regional collections and elite gauntlet with appropriate help, then choose Tidebringer's Claw and keep Elementalist's Guard. Starting level is 30, but the outdoor enemies are roughly 34–41. Arrange a group if completing early. [11,39]</p>
+    <p><strong>Nicky's equivalent priority:</strong> finish the Tempest chain's four regional collections and elite gauntlet with appropriate help, then choose Tidebringer's Claw and keep Elementalist's Guard. Starting level is 30, but the outdoor enemies are roughly 34–41. Arrange a group if completing early. [11,39]</p>
     <p><strong>Other dungeons:</strong> The Drowned City is a new 35–40 group option. Do not let its new-content appeal displace your level-37 Ravager goal. New quest bundle remains a live-client check. [25]</p>
     <ul class="checks">
       <li>At 35: Artisan crafting can be trained if desired; 300 is not required for the early ten-point plan.</li>
-      <li>Keep an updated shield/one-hander alongside Ravager. Preserve Nikki's mana and healing set.</li>
+      <li>Keep an updated shield/one-hander alongside Ravager. Preserve Nicky's mana and healing set.</li>
     </ul>
     <h3>40–44 · Tanaris, Feralas, Riverglades</h3>
-    <p><strong>Unlocks at 40:</strong> riding (budget 100g, includes the mount), plate for Marc, mail for Nikki and dual specialization (cost unknown). Budget travel training ahead of small auction-house upgrades. Better healer cloth/leather can remain equipped; armor proficiency is not a reason to discard strong healing stats. [42]</p>
+    <p><strong>Unlocks at 40:</strong> riding (budget 100g, includes the mount), plate for Marc, mail for Nicky and dual specialization (cost unknown). Budget travel training ahead of small auction-house upgrades. Better healer cloth/leather can remain equipped; armor proficiency is not a reason to discard strong healing stats. [42]</p>
     <p><strong>Group circuit:</strong> Scarlet Cathedral around 39–42, RFD around 38–42, Uldaman around 42–45. Krol'dok Stronghold is officially 40–45 and is optional when the group/quest package is ready. [25]</p>
     <p><strong>Quest prep:</strong> in Badlands complete Badlands Reagent Run and start the Horde necklace chain before Uldaman. In Hinterlands, keep the Venom Bottles chain moving toward The Spider God. Start Yeh'kinya's Screecher Spirits in Tanaris for ZF and later Temple/LBRS. [28,29]</p>
-    <p><strong>Gear comparison:</strong> Cathedral can offer Aegis of the Scarlet Commander for Marc and Hand of Righteousness/Whitemane's Chapeau for Nikki at 39. Compare with her Tempest rewards before repeating for them. [38]</p>
+    <p><strong>Gear comparison:</strong> Cathedral can offer Aegis of the Scarlet Commander for Marc and Hand of Righteousness/Whitemane's Chapeau for Nicky at 39. Compare with her Tempest rewards before repeating for them. [38]</p>
     <ul class="checks">
       <li>Check both 31-point capstones once your actual talent total permits them; 5/5 Talented can bring the point count five levels earlier.</li>
       <li>Use a full party for current-level dungeon progress; use Ravager on selected favorable farming packs.</li>
@@ -225,7 +278,7 @@
     <h3>45–49 · Tanaris, Feralas and Hinterlands</h3>
     <p><strong>Quest focus:</strong> Gadgetzan/Steamwheedle and Feralas hub circuits, plus Hinterlands work that advances ZF preparations. Avoid switching regions until you have several reasons to move.</p>
     <p><strong>ZF:</strong> aim for 44–48 with a full party and the complete package: The Spider God, Divino-matic Rod, Scarab Shells, Troll Temper, Tiara of the Deep, Gahz'rilla and The Prophecy of Mosh'aru. Verify the mallet/summon arrangement before leaving town. [29]</p>
-    <p><strong>Maraudon:</strong> aim for 48–51 for a full quest clear. Marc's Thrash Blade is a reliable quest reward from Corruption of Earth and Seed, not a random weapon farm. Nikki can choose Resurgence Rod from her own copy if it beats her setup. Both can complete the same quest and choose different rewards. [30,37]</p>
+    <p><strong>Maraudon:</strong> aim for 48–51 for a full quest clear. Marc's Thrash Blade is a reliable quest reward from Corruption of Earth and Seed, not a random weapon farm. Nicky can choose Resurgence Rod from her own copy if it beats her setup. Both can complete the same quest and choose different rewards. [30,37]</p>
     <p><strong>At 45:</strong> claim the class Legacy point. Check Experienced Spelunker, but do not run a long missing dungeon solely because the checklist is nearly complete. Compare its travel cost to the perk you would actually unlock.</p>
     <ul class="checks">
       <li>Maraudon party agrees to both preparatory wings and Princess, not only a Princess shortcut.</li>
@@ -233,11 +286,11 @@
     </ul>
     <h3>50–54 · Un'Goro, Felwood and Temple preparation</h3>
     <p><strong>Quest focus:</strong> Marshal's Refuge circuits in Un'Goro and Bloodvenom Post/Felwood tasks. Keep objectives geographically grouped. Alcaz Prison is officially 48–53; take a prepared group when it fits the Dustwallow trip. [25]</p>
-    <p><strong>Before Sunken Temple:</strong> visit both class trainers at 50 and take their Temple chains. Prepare Yeh'kinya's continuation, Stonard's Pool of Tears chain, Marvon's stone-circle work and the relevant Un'Goro/Fallen Hero quests. Plan Temple at 52–55. These later chains remain {B} until checked in the live build. [31]</p>
-    <p><strong>Marc:</strong> evaluate Diamond Flask from the level-50 Warrior chain ending in Temple; this is a Classic-derived priority, subject to Forever's actual reward choices. <strong>Nikki:</strong> the Elemental Mastery → Spirit Totem → Da Voodoo chain and its Enamored Water Spirit trinket are Classic-derived and unverified; treat them as unverified, not as a planned reward. {C} {T} [31,65]</p>
+    <p><strong>Before Sunken Temple:</strong> visit both class trainers at 50. Take Marc's Temple chain and check whether Nicky's is offered. Prepare Yeh'kinya's continuation, Stonard's Pool of Tears chain, Marvon's stone-circle work and the relevant Un'Goro/Fallen Hero quests. Plan Temple at 52–55. These later chains remain {B} until checked in the live build. [31]</p>
+    <p><strong>Marc:</strong> evaluate Diamond Flask from the level-50 Warrior chain ending in Temple; this is a Classic-derived priority, subject to Forever's actual reward choices. <strong>Nicky:</strong> the Elemental Mastery → Spirit Totem → Da Voodoo chain and its Enamored Water Spirit trinket are Classic-derived and unverified; treat them as unverified, not as a planned reward. {C} {T} [31,65]</p>
     <p><strong>BRD:</strong> begin Kargath pickup rounds now, but book an explicit route such as prison/arena/key rather than a three-hour promise to clear everything. [32]</p>
     <ul class="checks">
-      <li>At 50/52/54, check trainer ranks; Nikki's improved heals matter more than a speculative auction-house BiS purchase.</li>
+      <li>At 50/52/54, check trainer ranks; Nicky's improved heals matter more than a speculative auction-house BiS purchase.</li>
       <li>After a new healing weapon, compare mana endurance as well as the size of individual heals.</li>
     </ul>
     <p class="srcline">Sources: [7,25,29,30,31,32,37].</p>
@@ -249,7 +302,7 @@
     <p><strong>Default questing:</strong> Western Plaguelands tasks from the Bulwark and Eastern Plaguelands hubs, plus Everlook/Winterspring circuits. Choose the current-level hub with several shared quests, not a chain that spends most of the evening flying.</p>
     <p><strong>Dungeon approach:</strong> targeted BRD at 54–60; LBRS around 57–60; Dire Maul wings and Scholomance/Stratholme with a full party near 60. Blackmaw Hold is officially 55–60; Shaper's Terrace 58–60. Their presence does not establish duo feasibility or a complete published quest bundle. [25,32-36]</p>
     <p><strong>Attunements:</strong> collect the Molten Core starter before the BRD route that reaches its objective. Start Warlord's Command at Kargath before the relevant LBRS boss clear, then keep Horde Onyxia steps in order. Do these if they match your endgame plans; raid preparation need not interrupt every leveling session. [33,47]</p>
-    <p><strong>Nikki's progression:</strong> prioritize practical healing upgrades in the same runs as Marc's tank upgrades. Do not spend evenings forcing an extremely rare healer item while several normal slots are still weak.</p>
+    <p><strong>Nicky's progression:</strong> prioritize practical healing upgrades in the same runs as Marc's tank upgrades. Do not spend evenings forcing an extremely rare healer item while several normal slots are still weak.</p>
     <ul class="checks">
       <li>Confirm keys and specific sections before recruiting. Bring enough drink for caster-heavy fights and wipes.</li>
       <li>If your duo test is slower than ordinary questing, finish the selected objective and move on; it can still be a fun farm.</li>
@@ -257,7 +310,7 @@
     <h3>60 · Training and a clear next goal</h3>
     <p><strong>First stop:</strong> train missing core ranks, spend remaining class points, review your Legacy build and repair/refill. Compare live Forever item tooltips with the <a href="#gear/g-60">provisional level 60 targets</a>.</p>
     <p><strong>First gearing nights:</strong> choose one useful dungeon for both of you. Example: a BRD route can address tank pieces and a healer trinket opportunity. A Stratholme run may address a one-hander and healer chest/neck options. Sources for those examples are Classic baseline, not guaranteed Forever rankings. [48,49]</p>
-    <p><strong>Keep both Warrior loadouts:</strong> one-handed weapon + shield for current-level tanking, and Ravager as the special-purpose AoE set. A new single-target weapon does not make the AoE toy redundant.</p>
+    <p><strong>Keep both Warrior loadouts:</strong> one-handed weapon + shield for current-level tanking, and Ravager as the special-purpose AoE set. A new single-target weapon does not make the AoE toy redundant, but retire Ravager once a level 50+ two-hander clearly beats it.</p>
     <p><strong>Next project:</strong> pick one of dungeon completion, a raid attunement, reliable duo farming, professions or relaxed quest cleanup. You do not need to pursue all five at once.</p>
     <ul class="checks">
       <li>Write the next dungeon, both gear priorities and any chain prerequisite in the session log.</li>
@@ -281,7 +334,7 @@
         <tr><td>Dungeon quest XP</td><td>Halved on Oct 1 but still about double Classic. Example: Deviate Hides went from 1,600 XP in Classic to about 3,100. {F} [4]</td><td>The <a href="#dungeons/d-prep">prep bundles</a> are the guide's most valuable part. Keep them.</td></tr>
         <tr><td>Green mobs</td><td>Low-level open-world mobs give 4–20% less XP than in Classic; Blizzard says this is staying. {F} [9]</td><td>Leave a zone once its mobs turn green. For Ravager, pick camps at or above your level.</td></tr>
         <tr><td>Rested XP</td><td>Pool caps at 150% of a level and doubles kill XP only. It builds in inns, capitals, or when you log out at a Camp Tent. {F} [24]</td><td>Save a full rested bar for a Ravager evening. Quest turn-ins don't spend it.</td></tr>
-        <tr><td>Party XP</td><td>Kill XP is split with a small party bonus. A bug that awarded XP from the highest-level member is fixed; XP now uses each player's own level against the mob. Larger level gaps are penalised. {F} [3,25]</td><td>Keep Marc and Nikki within a level of each other.</td></tr>
+        <tr><td>Party XP</td><td>Kill XP is split with a small party bonus. A bug that awarded XP from the highest-level member is fixed; XP now uses each player's own level against the mob. Larger level gaps are penalised. {F} [3,25]</td><td>Keep Marc and Nicky within a level of each other.</td></tr>
         <tr><td>Quest drops in a group</td><td>Reportedly distributed round-robin inside a party. Quest XP is not split; each player gets the full reward. {F} [25,26]</td><td>Collection quests finish closer together. Each player still needs their own count.</td></tr>
         <tr><td>Not in Forever</td><td>No sources found for Darkmoon XP buffs, Recruit-a-Friend XP, heirlooms, XP potions or guild perks. Sayge gives 2-hour stat buffs only. {J}</td><td>Don't plan around them.</td></tr>
       </tbody>
@@ -293,7 +346,7 @@
     <div class="scroll"><table>
       <thead><tr><th>Benefit</th><th>Earliest practical action</th><th>What it really does</th></tr></thead>
       <tbody>
-        <tr><td>Camp Tent</td><td>Around level 5: Nikki learns Leatherworking, reaches skill 20 and completes its Camping 101 introduction. Make tents with 5 Light Leather per craft.</td><td>Sitting nearby tops stored rested XP up to 5% of a level. It does nothing if you already have at least that much. Boosted Rest prevents another gain for an hour. <span class="rev">R2: the tent needs a campfire nearby and works as a portable inn with safe logoff. For 1–3 hour sessions, log out at the tent where you quest instead of hearthing. {F}</span></td></tr>
+        <tr><td>Camp Tent</td><td>Around level 5: Nicky learns Leatherworking, reaches skill 20 and completes its Camping 101 introduction. Make tents with 5 Light Leather per craft.</td><td>Sitting nearby tops stored rested XP up to 5% of a level. It does nothing if you already have at least that much. Boosted Rest prevents another gain for an hour. <span class="rev">R2: the tent needs a campfire nearby and works as a portable inn with safe logoff. For 1–3 hour sessions, log out at the tent where you quest instead of hearthing. {F}</span></td></tr>
         <tr><td>Cooked food</td><td>Learn Cooking at the first convenient trainer. Buy or cook food whose tooltip explicitly includes the XP bonus.</td><td>Suitable Well Fed food gives +5% XP from kills, plus its food stats. It is not +5% to quest rewards. <span class="rev">R2: you must eat for 10 seconds; the buff lasts about 15 minutes. The Legacy perk Gourmand extends food buffs by up to 100%. {F}</span></td></tr>
         <tr><td>Cozy Sleeping Bag</td><td>Chain becomes available from level 14. <span class="rev">R2: several guides say the Horde version is harder and suggest 30+ for the later legs. Start at 14 and finish the Arathi/Thoradin's Wall leg on a 30+ Eastern Kingdoms trip. {F} {T}</span></td><td>One minute per stack, up to +3% XP after three minutes. Different from tent rested XP. <span class="rev">R2: the "2-hour duration" is unsourced. The chain also reportedly gives two 12-slot bags.</span></td></tr>
         <tr><td>Inn / city logout</td><td>Every session from the start.</td><td>Build rested XP while away. With short sessions, this can make the tent temporarily unnecessary.</td></tr>
@@ -301,7 +354,7 @@
       </tbody>
     </table></div>
     <h3>Your camp setup</h3>
-    <p><strong>Nikki:</strong> Leatherworking + Skinning gives a tent and access to Camp Chair. <strong>Marc:</strong> Alchemy + Herbalism is the default for your duo, providing Mana Well and Incense Candle. Engineering/Mining is a good alternative if you value tank tools more. These choices are recommendations, not required specs. [4,5,7]</p>
+    <p><strong>Nicky:</strong> Leatherworking + Skinning gives a tent and access to Camp Chair. <strong>Marc:</strong> Alchemy + Herbalism is the default for your duo, providing Mana Well and Incense Candle. Engineering/Mining is a good alternative if you value tank tools more. These choices are recommendations, not required specs. [4,5,7]</p>
     <p>Complete The Great Outdoors around level 5, learn Cooking and Basic Campfire, then do the profession Camping 101 quests. Tier-one profession objects start at skill 20. Basic fire: three feature slots, but each player can place only one feature; all that player's features share a one-hour cooldown. You two can supply two features, not every buff at once. Anyone nearby can benefit. [4] <span class="rev">R2: a cook can upgrade the fire to 5 or 10 objects. Camp buffs do not stack with the matching class buff. {F}</span></p>
     <p><strong>Priority:</strong> use the tent when rested XP is low; otherwise take useful combat/mana buffs. Do not spend ten minutes hunting a camp to gain a small bonus. Public camps and a nearby alt can help, but require a real player/character contribution and available cooldowns.</p>
     <p><strong>Sleeping Bag travel:</strong> burned remains south of Camp Taurajo → remains at Alexston's Farmstead, Westfall → abandoned camp northeast of Sun Rock Retreat → nearby mound → Stonewrought Dam, Loch Modan → Thoradin's Wall jumping route. Complete in chain order; combine the Westfall leg with Deadmines travel. Student Fodder in Forever is recovery food, not its old Season of Discovery rested-XP reward. [6]</p>
@@ -311,7 +364,7 @@
   <article class="block" id="b-talented" data-p="5">
     <h2>Get Talented as early as practical</h2>
     <div class="fix">Revision 2: Legacy unlocks at character 25, at 150 in a crafting profession, or on full map exploration. There are 65 challenges in total. Talented needs 5 points already in the Adventure tree, so the order is forced anyway. {F}</div>
-    <p>The goal is ten Legacy points: five in <strong>Well Rested</strong>, then five in <strong>Talented</strong>. Talented brings class talent points forward by up to five levels; the final cap remains 51. Points are Battle.net-wide across eligible non-Hardcore characters, while each character makes its own perk allocation. Nikki's separate Battle.net needs its own completed challenges. [2,7]</p>
+    <p>The goal is ten Legacy points: five in <strong>Well Rested</strong>, then five in <strong>Talented</strong>. Talented brings class talent points forward by up to five levels; the final cap remains 51. Points are Battle.net-wide across eligible non-Hardcore characters, while each character makes its own perk allocation. Nicky's separate Battle.net needs its own completed challenges. [2,7]</p>
     <div class="scroll"><table>
       <thead><tr><th>Character on one Battle.net</th><th>Crafting targets</th><th>Points</th></tr></thead>
       <tbody>
@@ -349,7 +402,7 @@
       </tbody>
     </table></div>
     <h3>Crafting ledger</h3>
-    <div class="scroll"><table id="ledger"><thead><tr><th>Craft</th><th colspan="2">Marc account</th><th colspan="2">Nikki account</th></tr><tr><th></th><th>150</th><th>225</th><th>150</th><th>225</th></tr></thead><tbody></tbody></table></div>
+    <div class="scroll"><table id="ledger"><thead><tr><th>Craft</th><th colspan="2">Marc account</th><th colspan="2">Nicky account</th></tr><tr><th></th><th>150</th><th>225</th><th>150</th><th>225</th></tr></thead><tbody></tbody></table></div>
     <h3>Novice dungeon checklist [7]</h3>
     <ul class="checks">
       <li>Ragefire Chasm (or Hall of Thanes; Horde does not need Hall of Thanes if RFC satisfies the alternative)</li>
@@ -366,12 +419,12 @@
 
   <article class="block" id="b-spend" data-p="R5" data-src="r">
     <h2>Legacy spend plan: points 11–16</h2>
-    <p>Only 16 points can be spent per character at launch, and Nikki earns hers on her own Battle.net account. Perk names and values differ slightly between sources; read the live tooltip before spending. {F} [10,11,12]</p>
+    <p>Only 16 points can be spent per character at launch, and Nicky earns hers on her own Battle.net account. Perk names and values differ slightly between sources; read the live tooltip before spending. {F} [10,11,12]</p>
     <div class="scroll"><table>
       <thead><tr><th>Character</th><th>Points 11–16 (after Well Rested 5 + Talented 5)</th><th>Why</th></tr></thead>
       <tbody>
-        <tr><td>Marc</td><td><strong>Thrill of Adventure 5</strong> (restores 1–5% health and mana over 10 sec after a killing blow, open world only) + <strong>Frequent Flier 1</strong>.</td><td>Ravager pulls give many killing blows. That means less downtime between packs and less healing for Nikki. {J}</td></tr>
-        <tr><td>Nikki</td><td><strong>Frequent Flier 1</strong>, then <strong>Gourmand 3</strong> (food buffs up to +100% duration) or <strong>Field Guide 3</strong> (camp cooldown −8/17/25%).</td><td>Nikki lands few killing blows, so Thrill is weaker for her. Longer Well Fed or more camp uptime helps you both. {J}</td></tr>
+        <tr><td>Marc</td><td><strong>Thrill of Adventure 5</strong> (restores 1–5% health and mana over 10 sec after a killing blow, open world only) + <strong>Frequent Flier 1</strong>.</td><td>Ravager pulls give many killing blows. That means less downtime between packs and less healing for Nicky. {J}</td></tr>
+        <tr><td>Nicky</td><td><strong>Frequent Flier 1</strong>, then <strong>Gourmand 3</strong> (food buffs up to +100% duration) or <strong>Field Guide 3</strong> (camp cooldown −8/17/25%).</td><td>Nicky lands few killing blows, so Thrill is weaker for her. Longer Well Fed or more camp uptime helps you both. {J} <span class="rev">This assigns 4 of her 6 points. The guide doesn't name the last 2, so choose them from the live tree.</span></td></tr>
       </tbody>
     </table></div>
     <p>Frequent Flier is a 1-rank tier-3 perk (flights 50% cheaper, 20% faster) that needs 10 points in Adventure. {F} [12]</p>
@@ -426,7 +479,7 @@
         <tr><td>45–60</td><td>Keep Ravager in the Arms set while yellow-mob camps still die well. Replace it when a level 50+ two-hander from quests clearly outdamages it. (Thrash Blade is one-handed, for the Prot set.)</td><td>Ravager is item level 42; it falls behind around the mid-50s. {J}</td></tr>
       </tbody>
     </table></div>
-    <p><strong>If Marc would rather stay Protection:</strong> use Ravager only for packs of five or more, and swap back to the shield the moment Nikki calls "mana stop". The Prot cost is real: no Shield Block, no Shield Slam, no shield-based rage, and fewer Revenge procs.</p>
+    <p><strong>If Marc would rather stay Protection:</strong> use Ravager only for packs of five or more, and swap back to the shield the moment Nicky calls "mana stop". The Prot cost is real: no Shield Block, no Shield Slam, no shield-based rage, and fewer Revenge procs.</p>
     <p>Rage from auto-attacks now scales with weapon speed, so Ravager's slow 3.50 speed is not a rage penalty. {F} [16]</p>
   </article>
 
@@ -437,15 +490,15 @@
     <ul class="plain">
       <li>Both rested bars are full (log out at the tent or an inn the night before), and Well Fed is active on both. Those two bonuses only apply to kills.</li>
       <li>The camp is yellow or orange to both of you, respawns quickly, and at least one active quest needs those kills or drops.</li>
-      <li><strong>Stop</strong> when rested runs out, or when one pull in three ends with Nikki drinking. That is the point where questing wins again. {J}</li>
+      <li><strong>Stop</strong> when rested runs out, or when one pull in three ends with Nicky drinking. That is the point where questing wins again. {J}</li>
     </ul>
     <h3>Pull routine (open world)</h3>
     <div class="scroll"><table>
-      <thead><tr><th>Phase</th><th>Marc</th><th>Nikki</th></tr></thead>
+      <thead><tr><th>Phase</th><th>Marc</th><th>Nicky</th></tr></thead>
       <tbody>
         <tr><td>Set up</td><td>Battle Shout. Arms: Battle Stance; Prot: Defensive Stance.</td><td>Drop Strength of Earth, Windfury and Mana Spring at the kill spot before the pull, then stand at max heal range behind the totems.</td></tr>
         <tr><td>Gather</td><td>Pull 3–4 mobs first, then 5–6 once comfortable. Body-pull or tag each and run to the totems. Gather before a proc, because the 80% slow means Marc can't chase runners.</td><td>Earthbind Totem at the pile keeps mobs inside the spin. Frost Shock any runner at low health.</td></tr>
-        <tr><td>Burst</td><td>Demoralizing Shout, Thunder Clap (4 targets), Sweeping Strikes, then Cleave or Whirlwind. Don't press abilities during a spin until you've tested whether they cancel it.</td><td>Healing Wave as the steady heal; Lesser Healing Wave for spikes. Chain Heal from 40 when you are both taking damage.</td></tr>
+        <tr><td>Burst</td><td>Demoralizing Shout, Thunder Clap (4 targets), Sweeping Strikes, then Cleave. Whirlwind needs a swap to Berserker Stance (Classic rule), so only use it before a spin starts. Don't press abilities during a spin until you've tested whether they cancel it.</td><td>Healing Wave as the steady heal; Lesser Healing Wave for spikes. Chain Heal from 40 when you are both taking damage.</td></tr>
         <tr><td>Emergency</td><td>Retaliation (Battle Stance) or Shield Wall (Prot), both on 15-min cooldowns. Victory Rush on cooldown. Berserking for a fast finish.</td><td>Earth Shock to taunt a mob off yourself. Mana Tide when below half mana. Stoneclaw Totem to pull hits off you.</td></tr>
         <tr><td>Recover</td><td>Rapid Regeneration between packs (Troll). Thrill of Adventure if taken.</td><td>Drink only at below 40% mana; otherwise keep moving to the next pack.</td></tr>
       </tbody>
@@ -488,9 +541,9 @@
   <details class="block" id="b-orig13" data-p="13" data-src="o">
     <summary>Original page 13 notes (build advice replaced)</summary>
     <p class="fix">Revision 2 replaces "remain Protection" with the spec plan above. These notes still apply to pull selection.</p>
-    <p>Removing the shield also removes access to blocks and shield-dependent Protection effects. Nikki's healing load can rise sharply; a shield-based Revenge setup remains a useful comparison even on AoE pulls.</p>
+    <p>Removing the shield also removes access to blocks and shield-dependent Protection effects. Nicky's healing load can rise sharply; a shield-based Revenge setup remains a useful comparison even on AoE pulls.</p>
     <p>Select compact melee packs with no serious interrupt, silence, mana-burn or forced-movement problem. Bring mobs into a stable pile and keep the healer out of their path. Learn which action cancels the proc channel before a large pull. A proc can fail to arrive when you want it; your opening must be survivable without it.</p>
-    <p>Your previous whole-dungeon pulls are a valid personal experience. This guide does not treat them as a tested Forever route: different tuning, mobs and control effects can change the result. Measure a smaller version first, then scale to the pull size you and Nikki can sustain.</p>
+    <p>Your previous whole-dungeon pulls are a valid personal experience. This guide does not treat them as a tested Forever route: different tuning, mobs and control effects can change the result. Measure a smaller version first, then scale to the pull size you and Nicky can sustain.</p>
     <p>Stop when the evening stops being enjoyable and resume next session. [24,46]</p>
   </details>
 </section>
@@ -509,9 +562,9 @@
     <p class="muted">Always satisfy the live tree's row and prerequisite rules. Sources: [8,10,42,50].</p>
   </article>
 
-  <article class="block" id="b-nikki" data-p="15">
-    <h2>Nikki's training calendar</h2>
-    <div class="scroll"><table id="nikki-table"><thead><tr><th>Level</th><th>Priority unlock / action</th></tr></thead><tbody></tbody></table></div>
+  <article class="block" id="b-nicky" data-p="15">
+    <h2>Nicky's training calendar</h2>
+    <div class="scroll"><table id="nicky-table"><thead><tr><th>Level</th><th>Priority unlock / action</th></tr></thead><tbody></tbody></table></div>
     <p><strong>Talent milestones to seek, not automatic spells:</strong> Mindfulness for mana recovery, Water Shield, Mana Tide Totem, Nature's Swiftness and Riptide. In a deep Restoration route their ordinary milestones include 20 for Water Shield, 25 for Mana Tide, 30 for Nature's Swiftness and 40 for Riptide; Talented can move point availability earlier, but totem quests and trainer spells retain their own requirements. [9]</p>
     <p><strong>Forever kit:</strong> Water Shield (Resto talent) has 3 globes, each restoring 2% of max mana when hit or on a spell crit. Riptide at 40: instant heal plus heal-over-time, 6-sec cooldown, and +25% Chain Heal on that target. Mana Tide moved earlier (about 25) and now has a 50% chance to dispel a magic effect. Earth Shock taunt: peel a mob off yourself, then Marc taunts it back. {F}</p>
     <p class="muted">An unexpected live level should be recorded, not worked around by buying a similarly named spell from another WoW version. Sources: [9,11,43,44,45,51].</p>
@@ -536,7 +589,7 @@
     <h3>Healing controls before the first dungeon</h3>
     <p>Show both players' health, mana, removable debuffs and enemy casts clearly. A friendly mouseover heal is useful. Test it in the open world. An out-of-range valid mouseover does not automatically fall back to the tank. [52]</p>
     <blockquote class="code">/cast [@mouseover,help,nodead][help,nodead][@player] Healing Wave<button class="copy" type="button">Copy</button></blockquote>
-    <p>Use Healing Wave as the steady heal; keep Lesser Healing Wave available for urgency. Later use Riptide and Chain Heal where they fit the actual damage pattern. Nikki can contribute damage, but preserve enough mana and cast time to survive the next pull.</p>
+    <p>Use Healing Wave as the steady heal; keep Lesser Healing Wave available for urgency. Later use Riptide and Chain Heal where they fit the actual damage pattern. Nicky can contribute damage, but preserve enough mana and cast time to survive the next pull.</p>
     <p><strong>Totem slot discipline:</strong> one active totem per element. Tremor replaces Strength of Earth; Mana Tide occupies the water slot; Grounding competes with Windfury in air. Replace the regular buff afterward. Do not treat every enemy spell as interruptible or groundable.</p>
     <p><strong>Your two-word callouts:</strong> "mana stop", "big pull", "interrupt mine", "shield swapping". Decide who calls a reset. Preventing one uncontrolled pull saves more time than a small paper DPS improvement.</p>
     <p class="srcline">Sources: [9,11,39,43,45,51,52,53].</p>
@@ -565,7 +618,7 @@
         <tr><td>Excavation Site: Wetlands</td><td>24–25</td><td>24 [17]</td></tr>
         <tr><td>City of Dalaran</td><td>28</td><td>24 listed; access chain required [19]</td></tr>
         <tr><td>Gnomeregan</td><td>27–29</td><td>25 Rig Wars; neutral tasks may add gates [21]</td></tr>
-        <tr><td>Razorfen Kraul</td><td>27–29</td><td>30; Nikki's class chain also starts 30 [20]</td></tr>
+        <tr><td>Razorfen Kraul</td><td>27–29</td><td>30; Nicky's class chain also starts 30 [20]</td></tr>
         <tr><td>SM Graveyard</td><td>28–30 <span class="rev">Forever band 30–38</span></td><td>30 for Hearts of Zeal [22]</td></tr>
         <tr><td>SM Library</td><td>31–33 <span class="rev">Forever band 33–41</span></td><td>34 incl. Into SM [23]</td></tr>
         <tr><td>SM Armory</td><td>35–37 <span class="rev">Forever band 36–44</span></td><td>34 shared SM kill quest [23]</td></tr>
@@ -587,7 +640,7 @@
         <tr><td>Zul'Farrak</td><td>Early 42–44; preferred 44–48</td><td>Quest floor 40, {B}. Stairs/event may be the bottleneck.</td></tr>
         <tr><td>Maraudon</td><td>Early wings 43–46; full 48–51</td><td>Full reward package floor 45, {B}.</td></tr>
         <tr><td>Alcaz Prison</td><td>Official band 48–53</td><td>{V} quests.</td></tr>
-        <tr><td>Sunken Temple</td><td>Early 50–52; preferred 52–55</td><td>Both level-50 class packages prepared.</td></tr>
+        <tr><td>Sunken Temple</td><td>Early 50–52; preferred 52–55</td><td>Marc's level-50 class chain prepared. Nicky's is unverified.</td></tr>
         <tr><td>BRD: prison / arena / key</td><td>52–56 targeted</td><td>Multiple chains; no single all-quests first run.</td></tr>
         <tr><td>BRD: deeper / Emperor</td><td>57–60 full group</td><td>Do the relevant handoffs before returning.</td></tr>
         <tr><td>Dire Maul East</td><td>56–60 full group</td><td>{B} key/quest prep.</td></tr>
@@ -619,7 +672,7 @@
       </tbody>
     </table></div>
     <p>All five have minimum 9 in the cited Forever guide. Source disagreement: the later general quest guide places the satchel starter inside RFC, while the dedicated guide gives Rahauro. Check Rahauro first because you are collecting his other quest, then inspect the corpse in the run. [12,26]</p>
-    <p><strong>Preparation loop:</strong> Nikki's Thunder Bluff visit covers Rahauro; collect Orgrimmar quests while Marc finishes class training. Bundle Undercity with a scheduled trip or a valid party share if available. An early local run can still be chosen if you explicitly accept leaving that pickup for later.</p>
+    <p><strong>Preparation loop:</strong> Nicky's Thunder Bluff visit covers Rahauro; collect Orgrimmar quests while Marc finishes class training. Bundle Undercity with a scheduled trip or a valid party share if available. An early local run can still be chosen if you explicitly accept leaving that pickup for later.</p>
   </article>
 
   <article class="block" id="d-ruins" data-p="19">
@@ -675,7 +728,7 @@
   <article class="block" id="d-bfd" data-p="21">
     <h2>Blackfathom Deeps <small>full Horde package from 21</small></h2>
     <p>At Zoram'gar, Je'neu Sancrea supplies <strong>The Essence of Aku'Mai</strong>, <strong>Allegiance to the Old Gods</strong> and <strong>Amongst the Ruins</strong>. Bring any prerequisite damp-note handoff to Je'neu if offered. Inside, visit Argent Guard Thaelrid in the underwater side cave for <strong>Blackfathom Villainy</strong>. Loot the Fathom Core for Amongst the Ruins to trigger <strong>Baron Aquanis</strong>, then take the Strange Water Globe quest. Do not skip that water-side objective. [18]</p>
-    <p><strong>Loot worth noticing:</strong> Outlaw Sabre from the Aquanis follow-up for Marc; healing/caster quest rewards for Nikki. Both loot personal quest items. Final chamber completion and Kelris quest credit are different objectives, so agree to do both.</p>
+    <p><strong>Loot worth noticing:</strong> Outlaw Sabre from the Aquanis follow-up for Marc; healing/caster quest rewards for Nicky. Both loot personal quest items. Final chamber completion and Kelris quest credit are different objectives, so agree to do both.</p>
   </article>
 
   <article class="block" id="d-wet" data-p="21">
@@ -707,7 +760,7 @@
 
   <article class="block" id="d-rfk" data-p="22">
     <h2>Razorfen Kraul <small>your combined package wants level 30</small></h2>
-    <p><strong>Before entry:</strong> A Vengeful Fate: Auld Stonespire, Thunder Bluff (29 minimum); Going, Going, Guano!: Faranell, Undercity (30); Blueleaf Tubers: Mebok Mizzyrix, Ratchet (bring his gopher equipment). Marc carries the Brutal Hauberk objective for Roogug's Vial of Phlogiston. Nikki advances Tempest's Weapons until Charlga's Tattered Note objective is active. [10,11,20]</p>
+    <p><strong>Before entry:</strong> A Vengeful Fate: Auld Stonespire, Thunder Bluff (29 minimum); Going, Going, Guano!: Faranell, Undercity (30); Blueleaf Tubers: Mebok Mizzyrix, Ratchet (bring his gopher equipment). Marc carries the Brutal Hauberk objective for Roogug's Vial of Phlogiston. Nicky advances Tempest's Weapons until Charlga's Tattered Note objective is active. [10,11,20]</p>
     <p><strong>During/after:</strong> do Willix's escort; loot Charlga's Small Scroll for An Unholy Alliance. Turn the scroll in to Varimathras before RFD. Finish Guano before collecting Hearts of Zeal for Scarlet Monastery. Shared collection drops may prevent a single-run finish.</p>
   </article>
 
@@ -759,7 +812,7 @@
 
   <article class="block" id="d-temple" data-p="24">
     <h2>Sunken Temple <small>prepare both class chains at 50</small></h2>
-    <p>Stonard: Fel'zerul's Pool of Tears chain to The Temple of Atal'Hakkar. Feralas/Tanaris: The Sunken Temple → The Stone Circle → Into the Depths / Secret of the Circle as offered. Steamwheedle: Yeh'kinya's post-ZF chain to The God Hakkar. Check Zapper Fuel via Un'Goro/Liv Rizzlefix and Jammal'an the Prophet via the Hinterlands exile. <strong>Marc:</strong> A Troubled Spirit → Warrior Kinship → War on the Shadowsworn → Voodoo Feathers (Diamond Flask). <strong>Nikki:</strong> Elemental Mastery → Spirit Totem → Da Voodoo (Enamored Water Spirit) is unverified. {C} {T} Collect the Eranikus starter inside. [31,65,66] Later Forever availability/reward changes remain unverified.</p>
+    <p>Stonard: Fel'zerul's Pool of Tears chain to The Temple of Atal'Hakkar. Feralas/Tanaris: The Sunken Temple → The Stone Circle → Into the Depths / Secret of the Circle as offered. Steamwheedle: Yeh'kinya's post-ZF chain to The God Hakkar. Check Zapper Fuel via Un'Goro/Liv Rizzlefix and Jammal'an the Prophet via the Hinterlands exile. <strong>Marc:</strong> A Troubled Spirit → Warrior Kinship → War on the Shadowsworn → Voodoo Feathers (Diamond Flask). <strong>Nicky:</strong> Elemental Mastery → Spirit Totem → Da Voodoo (Enamored Water Spirit) is unverified. {C} {T} Collect the Eranikus starter inside. [31,65,66] Later Forever availability/reward changes remain unverified.</p>
   </article>
 
   <article class="block" id="d-brd" data-p="24">
@@ -787,26 +840,26 @@
   <article class="block" id="g-early" data-p="25">
     <h2>Levels 1–34</h2>
     <div class="scroll"><table>
-      <thead><tr><th>Band</th><th>Marc: tank / two-handed</th><th>Nikki: healer / support</th></tr></thead>
+      <thead><tr><th>Band</th><th>Marc: tank / two-handed</th><th>Nicky: healer / support</th></tr></thead>
       <tbody>
         <tr><td>1–9</td><td>Affordable current-DPS weapon; retain any useful one-hander + shield. Avoid spending heavily on armor replaced immediately.</td><td>Mana-stat quest gear and a usable weapon. Train key heals before buying gear.</td></tr>
         <tr><td>10–14</td><td>Hammer of Orgrimmar from Hidden Enemies/RFC follow-up; crafted Thick War Axe at 12 if affordable. [12,54]</td><td>Fire quest relic: Totem of Charged Flames. RFC caster drops such as Robe of Evocation are comparisons, not mandatory farms. [11,55]</td></tr>
         <tr><td>15–19</td><td>Wingblade from Leaders of the Fang, WC. Cruel Barb from VanCleef if Deadmines already fits the Legacy trip. [14,54]</td><td>Crescent Staff from her own Leaders quest; Living Root from Verdan as an alternative. Glowing Shard follow-up offers Talbar Mantle. [14,55]</td></tr>
         <tr><td>20–24</td><td>Ruga's Bulwark from class quest; compare with SFK shields/drops. Outlaw Sabre from BFD Aquanis follow-up when ready. [10,18]</td><td>Polished Driftwood Icon at 20+ (Enchanting; verify binding/requirement). SFK's caster cloth and Crescent/Living Root remain candidates. [53]</td></tr>
         <tr><td>25–29</td><td>Outlaw Sabre if still missing. Rig Wars reward choices from Gnomeregan; compare tank stats rather than selecting a DPS item automatically. [18,21]</td><td>Healer's Staff from Wetlands Elder Knowledge if better; caster Rig Wars reward, Civinad Robes, if useful. [17,21]</td></tr>
-        <tr><td>30–34</td><td>Brutal Hauberk after RFK class-chain completion; Whirlwind two-hander optional with help. No obligation to farm a temporary weapon before Ravager. [10]</td><td>Prepare Tidebringer's Claw + Elementalist's Guard through Tempest's Weapons. Compare spell/healing leatherworking crafts and relic upgrades. [11,39]</td></tr>
+        <tr><td>30–34</td><td>Brutal Hauberk after RFK class-chain completion; Skip the Whirlwind two-hander unless a group is already there. No obligation to farm a temporary weapon before Ravager. [10]</td><td>Prepare Tidebringer's Claw + Elementalist's Guard through Tempest's Weapons. Compare spell/healing leatherworking crafts and relic upgrades. [11,39]</td></tr>
       </tbody>
     </table></div>
     <h3>Gear decisions that save time</h3>
     <p><strong>Marc:</strong> compare one-handed weapon DPS, shield armor/block and enough stamina for the pulls you are doing. Keep weapons skilled. A higher item level without usable stats is not automatically an upgrade.</p>
-    <p><strong>Nikki:</strong> compare healing/spell power, intellect, mana sustain and enough stamina. Cloth and leather can be legitimate healing upgrades. Spell-damage-only gear does not automatically improve healing; read the exact tooltip.</p>
-    <p><strong>Shared reward planning:</strong> each of you chooses a reward from your own quest. Marc can take Wingblade while Nikki takes Crescent Staff. Avoid competing for an item when equivalent personal quest rewards solve the same problem.</p>
+    <p><strong>Nicky:</strong> compare healing/spell power, intellect, mana sustain and enough stamina. Cloth and leather can be legitimate healing upgrades. Spell-damage-only gear does not automatically improve healing; read the exact tooltip.</p>
+    <p><strong>Shared reward planning:</strong> each of you chooses a reward from your own quest. Marc can take Wingblade while Nicky takes Crescent Staff. Avoid competing for an item when equivalent personal quest rewards solve the same problem.</p>
   </article>
 
   <article class="block" id="g-mid" data-p="26">
     <h2>Levels 35–59</h2>
     <div class="scroll"><table>
-      <thead><tr><th>Band</th><th>Marc</th><th>Nikki</th></tr></thead>
+      <thead><tr><th>Band</th><th>Marc</th><th>Nicky</th></tr></thead>
       <tbody>
         <tr><td>35–39</td><td><strong>Priority: Ravager at 37, Herod.</strong> Sword of Omen from Into SM after all required wing kills. Herod's armor is worth comparing during the farm. [23,24]</td><td><strong>Priority:</strong> finish Tempest weapon/shield if feasible. Library caster options such as Illusionary Rod are alternatives, not compulsory if the class package wins. [39,56]</td></tr>
         <tr><td>39–44</td><td>Aegis of the Scarlet Commander, Cathedral (equip 39). Fresh plate with tank stats when affordable; avoid a full auction-house makeover. [38]</td><td>Hand of Righteousness and Whitemane's Chapeau, Cathedral (39). Glowing Eye of Mordresh from RFD is a healer comparison; source/late tuning provisional. [38,57]</td></tr>
@@ -818,7 +871,7 @@
     <h3>Library books: another route-friendly upgrade source</h3>
     <p>Loot nearby books and hand them to Owen Thadd, Magic Quarter, Undercity. Current guides list reward milestones at 10, 20 and 25 books: necklace, ring, then additional equipment choices. Each character should track its own collections. Collect books near quests you are doing; do not spend an entire short evening crossing continents for a minor reward. [59]</p>
     <h3>What to pass over</h3>
-    <p>Unknown-source "BiS" items, expensive random-suffix perfection, and old item-page comments that discuss a different expansion. Shamans cannot use swords: a caster-looking Inventor's Focal Sword is not a Nikki weapon recommendation. Confirm any new Forever proficiency explicitly before treating an old restriction differently.</p>
+    <p>Unknown-source "BiS" items, expensive random-suffix perfection, and old item-page comments that discuss a different expansion. Shamans cannot use swords: a caster-looking Inventor's Focal Sword is not a Nicky weapon recommendation. Confirm any new Forever proficiency explicitly before treating an old restriction differently.</p>
     <p><strong>Time labels:</strong> quest reward already on route = high value; detour that also gives a class unlock/Legacy point = often high value; repeated boss drop = discretionary; rare world drop / auction purchase = price-dependent. Ravager is your explicit exception to the usual one-clear preference.</p>
   </article>
 
@@ -833,13 +886,13 @@
         <tr><td>Marc: head / shoulders</td><td>Current-level plate with usable tank stats</td><td>Compare live dungeon rewards and crafts; check source and price before farming.</td></tr>
         <tr><td>Marc: chest / legs / feet</td><td>Sturdy plate with stamina, threat stats and appropriate defense</td><td>Use current Forever rewards/crafts; do not trade away survivability to complete an old set.</td></tr>
         <tr><td>Marc: trinket</td><td>Diamond Flask if unchanged; defensive alternatives</td><td>Level-50 class-chain reward/Temple, {B}. Choose tank use versus a DPS trinket goal. [31]</td></tr>
-        <tr><td>Nikki: head</td><td>Insightful Hood</td><td>Cho'Rush, Dire Maul North. {C} [49]</td></tr>
-        <tr><td>Nikki: shoulders</td><td>Royal Cap Spaulders / Mantle of Lost Hope</td><td>Jandice, Scholomance / Lord Roccor, BRD. {C} [49]</td></tr>
-        <tr><td>Nikki: cloak</td><td>Hide of the Wild</td><td>Leatherworking/BoE craft. {C} Compare current crafts. [49]</td></tr>
-        <tr><td>Nikki: chest / neck</td><td>Robes of the Exalted / Animated Chain Necklace</td><td>Baron Rivendare / Ramstein, undead Stratholme. {C} [62]</td></tr>
-        <tr><td>Nikki: ring</td><td>Rosewine Circle</td><td>War Master Voone, LBRS. {C} [63]</td></tr>
-        <tr><td>Nikki: trinket</td><td>Second Wind / Mindtap Talisman</td><td>Golem Lord Argelmach, BRD / Magister Kalendris, DM West. {C} [63]</td></tr>
-        <tr><td>Nikki: weapon / shield / relic</td><td>Keep strong class rewards until measured upgrade</td><td>Compare actual Forever healing, mana and useful effects; existing gear remains the default if evidence is uncertain.</td></tr>
+        <tr><td>Nicky: head</td><td>Insightful Hood</td><td>Cho'Rush, Dire Maul North. {C} [49]</td></tr>
+        <tr><td>Nicky: shoulders</td><td>Royal Cap Spaulders / Mantle of Lost Hope</td><td>Jandice, Scholomance / Lord Roccor, BRD. {C} [49]</td></tr>
+        <tr><td>Nicky: cloak</td><td>Hide of the Wild</td><td>Leatherworking/BoE craft. {C} Compare current crafts. [49]</td></tr>
+        <tr><td>Nicky: chest / neck</td><td>Robes of the Exalted / Animated Chain Necklace</td><td>Baron Rivendare / Ramstein, undead Stratholme. {C} [62]</td></tr>
+        <tr><td>Nicky: ring</td><td>Rosewine Circle</td><td>War Master Voone, LBRS. {C} [63]</td></tr>
+        <tr><td>Nicky: trinket</td><td>Second Wind / Mindtap Talisman</td><td>Golem Lord Argelmach, BRD / Magister Kalendris, DM West. {C} [63]</td></tr>
+        <tr><td>Nicky: weapon / shield / relic</td><td>Keep strong class rewards until measured upgrade</td><td>Compare actual Forever healing, mana and useful effects; existing gear remains the default if evidence is uncertain.</td></tr>
       </tbody>
     </table></div>
     <p><strong>Suggested paired nights:</strong> BRD targeted run first; undead Stratholme when both are ready; LBRS for quests/attunement plus gear; Dire Maul after key/route planning. One dungeon that helps both beats two separate single-item trips.</p>
@@ -851,10 +904,10 @@
     <div class="scroll"><table>
       <thead><tr><th>Level / setup</th><th>Trial location</th><th>Goal / stop rule</th></tr></thead>
       <tbody>
-        <tr><td>16–24, sword + shield</td><td>Dense, level-appropriate melee quest camps in Barrens / Silverpine</td><td>Start with 2–3 mobs. Expand only if Nikki stays comfortable and recovery is short.</td></tr>
+        <tr><td>16–24, sword + shield</td><td>Dense, level-appropriate melee quest camps in Barrens / Silverpine</td><td>Start with 2–3 mobs. Expand only if Nicky stays comfortable and recovery is short.</td></tr>
         <tr><td>25–36, sword + shield</td><td>Compact melee camps in Thousand Needles, Hillsbrad or STV</td><td>Prefer several relevant quests at once. Skip caster-heavy packs when they interrupt your rhythm.</td></tr>
-        <tr><td>37–44, Ravager available</td><td>Previously cleared outdoor melee camps; old RFC as a controlled test</td><td>Outdoor XP/loot first; old dungeon gear/material farming second. Avoid a long detour for gray-mob XP.</td></tr>
-        <tr><td>45–54, both loadouts</td><td>Selected old SM/RFK sections only after testing; current-level outdoor packs</td><td>Use dungeon farms for a defined item/material goal. Compare shield/Revenge clear time with Ravager.</td></tr>
+        <tr><td>37–44, Ravager available</td><td>Yellow or orange outdoor melee camps; old dungeons for loot only</td><td>Outdoor XP first; old dungeon runs are for gear or materials, not XP. Avoid long detours for green or gray mobs.</td></tr>
+        <tr><td>45–54, both loadouts</td><td>Current-level outdoor packs; selected old SM/RFK sections for named items only</td><td>Use dungeon farms for a defined item/material goal. Compare shield/Revenge clear time with Ravager.</td></tr>
         <tr><td>55–60</td><td>Selected old dungeon routes or BRD early sections</td><td>Treat bosses/control mechanics individually. No blanket promise that full contemporary dungeons are efficient as a duo.</td></tr>
       </tbody>
     </table></div>
@@ -868,14 +921,14 @@
   <form id="log-form" class="panel form">
     <label>Date <input name="date" type="date"></label>
     <label>Marc level <input name="marc" type="number" min="1" max="60"></label>
-    <label>Nikki level <input name="nikki" type="number" min="1" max="60"></label>
+    <label>Nicky level <input name="nicky" type="number" min="1" max="60"></label>
     <label class="wide">Where parked / hearth <input name="parked"></label>
     <label class="wide">Next exact action <input name="next"></label>
     <label class="wide">Quests / prerequisites missing <input name="missing"></label>
     <label class="wide">Marc gear target / obtained <input name="gearMarc"></label>
-    <label class="wide">Nikki gear target / obtained <input name="gearNikki"></label>
+    <label class="wide">Nicky gear target / obtained <input name="gearNicky"></label>
     <label>Legacy: Marc account <input name="legacyMarc"></label>
-    <label>Legacy: Nikki account <input name="legacyNikki"></label>
+    <label>Legacy: Nicky account <input name="legacyNicky"></label>
     <label class="wide">Training / tent / bag status <input name="status"></label>
     <label>Duo test route <input name="route"></label>
     <label>Time <input name="time"></label>

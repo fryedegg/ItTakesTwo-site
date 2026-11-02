@@ -7,10 +7,10 @@ window.GUIDE = {
     [20, 24, "Silverpine / Hillsbrad; Stonetalon / early Ashenvale", "SFK 20–24; BFD 22–25. Water Totem; Expert crafting; Legacy push.", "r-15-24"],
     [25, 29, "Hillsbrad, Thousand Needles; Ashenvale", "Wetlands 25–29; Dalaran 28–31. Prep RFK at level 30, not just its entry level.", "r-25-34"],
     [30, 34, "Thousand Needles, Hillsbrad, early STV", "Both level-30 class chains; RFK 30–33; Gnomeregan 29–33. Prepare SM books.", "r-25-34"],
-    [35, 39, "Desolace / STV; Dustwallow / Badlands as needed; Riverglades 37+", "Library key before Armory. Level 37: Ravager priority. Nikki: Tempest chain.", "r-35-44"],
+    [35, 39, "Desolace / STV; Dustwallow / Badlands as needed; Riverglades 37+", "Library key before Armory. Level 37: Ravager priority. Nicky: Tempest chain.", "r-35-44"],
     [40, 44, "Feralas, Tanaris, Riverglades", "Cathedral, RFD, Uldaman; Krol'dok optional. Riding and armor training at 40.", "r-35-44"],
     [45, 49, "Tanaris, Feralas, Hinterlands; look at Shen'dralas", "ZF full quest run; Maraudon 48–51. Thrash Blade and healer upgrades.", "r-45-54"],
-    [50, 54, "Un'Goro, Felwood; Hinterlands cleanup", "Alcaz optional; Sunken Temple 52–55 after both class chains; BRD prep.", "r-45-54"],
+    [50, 54, "Un'Goro, Felwood; Hinterlands cleanup", "Alcaz optional; Sunken Temple 52–55 after Marc's class chain; BRD prep.", "r-45-54"],
     [55, 59, "Western / Eastern Plaguelands; Winterspring", "BRD targeted sections. Full groups for later dungeons; collect attunement starters.", "r-55-60"],
     [60, 60, "Choose dungeon gearing and attunement goals", "Train all key ranks; finish Legacy spend plan; compare actual Forever loot.", "r-55-60"],
   ],
@@ -28,7 +28,7 @@ window.GUIDE = {
     [29, 33, "Gnomeregan", "d-gnomer"],
     [30, 33, "Razorfen Kraul", "d-rfk"],
     [30, 38, "SM Graveyard", "d-sm"],
-    [34, 41, "SM Library", "d-sm"],
+    [33, 41, "SM Library", "d-sm"],
     [35, 40, "The Drowned City", "d-new"],
     [36, 44, "SM Armory", "d-sm"],
     [37, 42, "Razorfen Downs", "d-rfd"],
@@ -62,7 +62,7 @@ window.GUIDE = {
     [48, 54, "Felwood: Deadwood furbolgs (north Felwood)", "Tight camps; the kills also earn Timbermaw reputation for Winterspring. {C}", "Shaman furbolg healers and totems; some flee at low health (Earthbind helps)."],
     [50, 54, "Un'Goro: gorillas (Un'Goro Ridge, north-west)", "Beast packs with no casters; the best Classic Ravager fit in this band. {C}", "Stompers knock down and stun; elite Devilsaurs patrol. The new Shaper's Terrace dungeon is in the northern hills, so the terrain may have changed. {F}"],
     [53, 58, "Winterspring: Winterfall furbolgs", "Dense camps; continues the Timbermaw reputation from Felwood. {C}", "Shamans and totems; long flight from Kalimdor hubs."],
-    [54, 59, "Eastern Plaguelands: Plaguewood, Terrordale (ghouls, Plaguehounds)", "Melee undead that never flee; Nathanos's Demon Dogs and Carrion Grubbage kill quests overlap. {C}", "Banshees silence and curse; Nikki should cleanse."],
+    [54, 59, "Eastern Plaguelands: Plaguewood, Terrordale (ghouls, Plaguehounds)", "Melee undead that never flee; Nathanos's Demon Dogs and Carrion Grubbage kill quests overlap. {C}", "Banshees silence and curse; Nicky should cleanse."],
     [55, 58, "Western Plaguelands: Andorhal skeletons", "Dense skeleton packs for the Bulwark's Skeletal Fragments quest. {C}", "Skeletal Sorcerers and Acolytes cast. Rank it below Plaguewood."],
     [50, 58, "Burning Steppes: Blackrock orcs", "Dense, but low priority. {C}", "Warlocks with pets that fear; Firegut ogre mages."],
   ],
@@ -100,7 +100,7 @@ window.GUIDE = {
     [58, "Sunder/Thunder Clap."],
     [60, "Cleave/Shield Slam and any missing core ranks."],
   ],
-  nikki: [
+  nicky: [
     [4, "Tauren Earth Totem quest."],
     [6, "Healing Wave rank; Earthbind check."],
     [8, "Purge and current damage spell ranks."],
@@ -131,6 +131,70 @@ window.GUIDE = {
     [58, "Inspect useful ranks."],
     [60, "Final healing and support ranks; review consumables/reagents."],
   ],
+
+  // Per-bracket goals, keyed by the bracket's first level.
+  plan: {
+    1: {
+      both: ["Pick the same ruleset before you make characters.", "Level apart to about 10, then meet at Crossroads.", "Learn professions and Cooking around 5; unlock camps."],
+      marc: ["Valley of Trials, then Sen'jin and Razor Hill circuits.", "Keep a usable one-hander and shield."],
+      nicky: ["Camp Narache, then Bloodhoof Village.", "Finish Call of Earth before leaving Mulgore.", "Reach Leatherworking 20 for the tent."],
+    },
+    10: {
+      both: ["Open flight paths around Crossroads and Ratchet.", "Prep RFC quests on a shared city trip, then run it at 13–16 with a group.", "Start the crafting ledger."],
+      marc: ["Do the Defensive Stance quest via Far Watch Post and Thunder Ridge."],
+      nicky: ["Finish the Fire Totem chain before the first dungeon."],
+    },
+    15: {
+      both: ["Get Leaders of the Fang active before Wailing Caverns.", "Pick up Undercity quests before Ruins of Lordaeron.", "Work the Sleeping Bag chain in linked stages.", "Agree the full Naralex finish with the WC party."],
+      marc: ["Aim for Hammer of Orgrimmar, then Wingblade."],
+      nicky: ["Aim for Crescent Staff or Living Root.", "Train Tremor Totem at 18."],
+    },
+    20: {
+      both: ["Have all three Horde SFK quests active.", "Link continent trips through the Water Totem chain.", "Get Amongst the Ruins ready for BFD at 21."],
+      marc: ["Do the Ruga chain for Ruga's Bulwark. Don't gather Hauberk materials yet."],
+      nicky: ["Start Call of Water and finish it before relying on water totems."],
+    },
+    25: {
+      both: ["Claim the level-25 class milestone on each account.", "Prepare Wetlands: Changing Tastes and Dragonmaw Rumors.", "Work the Dalaran key chain from Tarren Mill."],
+      marc: ["Look for Outlaw Sabre and compare tank stats on Rig Wars rewards."],
+      nicky: ["Compare Healer's Staff and Civinad Robes."],
+    },
+    30: {
+      both: ["Collect every RFK quest before going in.", "Start the Test of Faith chain and Compendium for SM Library.", "Visit both trainers at 30."],
+      marc: ["The Islander and The Affray for Berserker Stance.", "Start the Brutal Hauberk chain."],
+      nicky: ["Call of Air, then The Tempest's Weapons up to its RFK step."],
+    },
+    35: {
+      both: ["Run SM Library with both books and take the Scarlet Key.", "Book two evenings for Herod at 37; agree loot first.", "Get flight paths before long detours."],
+      marc: ["Keep axe skill trained. Equip Ravager at 37, then respec to Arms."],
+      nicky: ["Finish the Tempest chain with help: Tidebringer's Claw and Elementalist's Guard."],
+    },
+    40: {
+      both: ["Budget 100g each for riding, plus dual spec for Marc.", "Quest Riverglades and try Krol'dok with a group.", "Prepare Uldaman and start Screecher Spirits for ZF."],
+      marc: ["Buy dual spec: Arms for open world, Protection for dungeons.", "Train plate; look for Aegis of the Scarlet Commander."],
+      nicky: ["Train mail, Chain Heal and take Riptide.", "Compare Cathedral healer gear with her Tempest rewards."],
+    },
+    45: {
+      both: ["Prepare the full ZF package and sort the mallet.", "Run Maraudon at 48–51; agree both wings and Princess.", "Claim the level-45 class Legacy point."],
+      marc: ["Take Thrash Blade from Corruption of Earth and Seed."],
+      nicky: ["Take Resurgence Rod from her own copy if it beats her setup."],
+    },
+    50: {
+      both: ["Prepare Sunken Temple chains for a 52–55 run.", "Start Kargath pickups and book one BRD section.", "Cleave Un'Goro gorillas or Felwood furbolgs on rested nights."],
+      marc: ["Take the level-50 Warrior chain toward Diamond Flask."],
+      nicky: ["Check whether a level-50 chain is offered; it's unverified.", "Keep healing ranks current at 52 and 54."],
+    },
+    55: {
+      both: ["Choose hubs with several shared quests.", "Confirm keys and the exact section before recruiting.", "Collect attunement starters if they suit your endgame plans."],
+      marc: ["Fill weak slots and stay survivable. Retire Ravager when a two-hander beats it."],
+      nicky: ["Prioritize practical healing upgrades in the same runs as Marc's."],
+    },
+    60: {
+      both: ["Pick one next project together.", "Choose one dungeon that helps both of you.", "Compare live tooltips with the provisional targets."],
+      marc: ["Train missing ranks and keep both weapon sets."],
+      nicky: ["Train final healing ranks and review reagents."],
+    },
+  },
 
   crafts: ["Alchemy", "Blacksmithing", "Enchanting", "Engineering", "Leatherworking", "Tailoring"],
 };

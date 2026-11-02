@@ -6,9 +6,10 @@
   var S = window.SOURCES;
 
   /* ---------- Saved state: wrapped so the site still works if storage is blocked ---------- */
-  var state = { levels: { marc: "", nikki: "" }, checks: {}, log: [] };
+  var state = { levels: { marc: "", nicky: "" }, checks: {}, log: [], xp: {} };
   try {
-    var saved = JSON.parse(localStorage.getItem(STORE_KEY));
+    var raw = localStorage.getItem(STORE_KEY);
+    var saved = raw && JSON.parse(raw.replace(/nikki/g, "nicky").replace(/Nikki/g, "Nicky"));
     if (saved) state = Object.assign(state, saved);
   } catch (e) {}
   function save() {
@@ -72,13 +73,13 @@
   rows("camps-table", G.camps.map(function (c) {
     return "<tr><td>" + bandLabel(c[0], c[1]) + "</td><td>" + esc(c[2]) + "</td><td>" + esc(c[3]) + "</td><td>" + esc(c[4]) + "</td></tr>";
   }).join(""));
-  ["marc", "nikki"].forEach(function (who) {
+  ["marc", "nicky"].forEach(function (who) {
     rows(who + "-table", G[who].map(function (t) {
       return '<tr data-level="' + t[0] + '"><td>' + t[0] + "</td><td>" + esc(t[1]) + "</td></tr>";
     }).join(""));
   });
   rows("ledger", G.crafts.map(function (craft) {
-    var cells = ["marc-150", "marc-225", "nikki-150", "nikki-225"].map(function (k) {
+    var cells = ["marc-150", "marc-225", "nicky-150", "nicky-225"].map(function (k) {
       var id = "ledger-" + craft + "-" + k;
       return '<td><input type="checkbox" data-check="' + id + '" aria-label="' + craft + " " + k.replace("-", " ") + '"></td>';
     }).join("");
@@ -145,7 +146,8 @@
 
   /* ---------- Tonight planner ---------- */
   var inMarc = document.getElementById("lvl-marc");
-  var inNikki = document.getElementById("lvl-nikki");
+  var inNicky = document.getElementById("lvl-nicky");
+  var inBoth = document.getElementById("lvl-both");
   var out = document.getElementById("tonight-out");
   var note = document.getElementById("lvl-note");
 
@@ -154,47 +156,41 @@
     if (isNaN(n)) return null;
     return Math.min(60, Math.max(1, n));
   }
-  function nextTraining(list, level) {
-    return list.filter(function (t) { return t[0] >= level; }).slice(0, 2);
+  function bandFor(level) {
+    return G.quick.filter(function (q) { return level >= q[0] && level <= q[1]; })[0];
   }
-  function trainingHtml(name, list, level) {
-    var items = nextTraining(list, level);
+  function checklist(items) {
+    return '<ul class="checks">' + items.map(function (text) {
+      return '<li><label><input type="checkbox" data-check="c-' + hash(text) + '"><span>' + esc(text) + "</span></label></li>";
+    }).join("") + "</ul>";
+  }
+  function trainingHtml(list, level) {
+    var items = list.filter(function (t) { return t[0] >= level; }).slice(0, 2);
     if (!items.length) return "";
-    return "<div><h3>" + name + " at the trainer</h3><ul class=\"plain\">" + items.map(function (t) {
+    return '<h3>Next at the trainer</h3><ul class="plain">' + items.map(function (t) {
       return "<li><strong>" + t[0] + ":</strong> " + tagged(esc(t[1])) + "</li>";
-    }).join("") + "</ul></div>";
+    }).join("") + "</ul>";
   }
-  function renderTonight() {
-    var marc = clampLevel(inMarc.value);
-    var nikki = clampLevel(inNikki.value);
-    state.levels = { marc: marc || "", nikki: nikki || "" };
-    save();
-
-    var known = [marc, nikki].filter(Boolean);
-    if (!known.length) {
-      note.textContent = "Content is chosen by the lower level.";
-      out.innerHTML = "";
-      return;
-    }
-    var level = Math.min.apply(null, known);
-    var gap = known.length === 2 ? Math.abs(marc - nikki) : 0;
-    note.textContent = "Planning for level " + level + (gap > 1 ? ". You're " + gap + " levels apart, and larger gaps are penalised on shared kill XP." : ".");
-
-    var band = G.quick.filter(function (q) { return level >= q[0] && level <= q[1]; })[0];
+  function personCard(cls, name, list, level) {
+    var goals = G.plan[bandFor(level)[0]][cls];
+    return '<article class="block plan ' + cls + '"><h2>' + name + " <small>level " + level + "</small></h2>" + checklist(goals) + trainingHtml(list, level) + "</article>";
+  }
+  function dungeonLink(d) {
+    return '<li><a href="#dungeons/' + d[3] + '">' + esc(d[2]) + '</a> <span class="muted">' + bandLabel(d[0], d[1]) + "</span></li>";
+  }
+  function bothCard(level) {
+    var band = bandFor(level);
     var dungeons = G.dungeons.filter(function (d) { return level >= d[0] && level <= d[1]; });
     var soon = G.dungeons.filter(function (d) { return d[0] > level && d[0] <= level + 3; });
     var camps = G.camps.filter(function (c) { return level >= c[0] && level <= c[1]; });
 
-    var html = '<article class="block tonight"><h2>Level ' + level + ': ' + esc(band[2]) + "</h2>";
-    html += "<p>" + esc(band[3]) + ' <a href="#route/' + band[4] + '">Full route for this bracket</a></p>';
-    html += '<div class="cols">' + trainingHtml("Marc", G.marc, marc || level) + trainingHtml("Nikki", G.nikki, nikki || level) + "</div>";
-
+    var html = '<article class="block plan both"><p class="kicker">Together tonight · level ' + level + "</p><h2>" + esc(band[2]) + "</h2>";
+    html += "<p>" + esc(band[3]) + ' <a href="#route/' + band[4] + '">Full route</a></p>';
+    html += checklist(G.plan[band[0]].both);
     html += '<div class="cols"><div><h3>Dungeons in range</h3>';
     html += dungeons.length ? '<ul class="plain">' + dungeons.map(dungeonLink).join("") + "</ul>" : '<p class="muted">None in a planned window yet.</p>';
-    if (soon.length) html += '<p class="muted">Coming up: ' + soon.map(function (d) { return '<a href="#dungeons/' + d[3] + '">' + esc(d[2]) + "</a> (" + d[0] + ")"; }).join(", ") + ". Collect the quests before you get there.</p>";
-    html += "</div>";
-
-    html += "<div><h3>Cleave camps</h3>";
+    if (soon.length) html += '<p class="muted">Coming up: ' + soon.map(function (d) { return '<a href="#dungeons/' + d[3] + '">' + esc(d[2]) + "</a> (" + d[0] + ")"; }).join(", ") + ". Collect the quests first.</p>";
+    html += "</div><div><h3>Cleave camps</h3>";
     if (camps.length) {
       html += '<ul class="plain">' + camps.map(function (c) { return "<li>" + esc(c[2]) + "</li>"; }).join("") + '</ul><p class="muted">Only when rested and Well Fed. <a href="#ravager/b-play">Pull routine</a></p>';
     } else if (level < 37) {
@@ -203,26 +199,85 @@
       html += '<p class="muted">No listed camp at this level. See <a href="#ravager/b-camps">all camps</a>.</p>';
     }
     html += "</div></div>";
-
     if (level >= 34 && level <= 39) {
       html += '<p class="callout"><strong>Ravager window.</strong> Library key at 34–36, Herod at 37. Book two evenings. <a href="#ravager/b-item">The plan</a></p>';
     }
-    html += "</article>";
-    out.innerHTML = html;
+    return html + "</article>";
   }
-  function dungeonLink(d) {
-    return '<li><a href="#dungeons/' + d[3] + '">' + esc(d[2]) + '</a> <span class="muted">' + bandLabel(d[0], d[1]) + "</span></li>";
+  function renderTonight() {
+    var marc = clampLevel(inMarc.value);
+    var nicky = clampLevel(inNicky.value);
+    state.levels = { marc: marc || "", nicky: nicky || "" };
+    save();
+
+    var known = [marc, nicky].filter(Boolean);
+    if (!known.length) {
+      inBoth.value = "";
+      note.textContent = "Set both levels, or use Both when you're level together. Shared plans follow the lower level.";
+      out.innerHTML = "";
+      return;
+    }
+    var level = Math.min.apply(null, known);
+    if (document.activeElement !== inBoth) inBoth.value = level;
+    var gap = known.length === 2 ? Math.abs(marc - nicky) : 0;
+    note.textContent = gap > 1
+      ? "You're " + gap + " levels apart, so shared plans use level " + level + ". Larger gaps are penalised on shared kill XP."
+      : gap === 1 ? "One level apart, so shared plans use level " + level + "." : "Planning for level " + level + ".";
+
+    out.innerHTML = bothCard(level) + '<div class="duo">' + personCard("marc", "Marc", G.marc, marc || level) + personCard("nicky", "Nicky", G.nicky, nicky || level) + "</div>";
+    syncChecks();
   }
   inMarc.value = state.levels.marc || "";
-  inNikki.value = state.levels.nikki || "";
+  inNicky.value = state.levels.nicky || "";
   inMarc.addEventListener("input", renderTonight);
-  inNikki.addEventListener("input", renderTonight);
+  inNicky.addEventListener("input", renderTonight);
+  inBoth.addEventListener("input", function () {
+    var both = clampLevel(inBoth.value);
+    if (both) { inMarc.value = both; inNicky.value = both; }
+    renderTonight();
+  });
+  document.querySelector(".picker").addEventListener("click", function (e) {
+    var step = e.target.getAttribute && e.target.getAttribute("data-step");
+    if (!step) return;
+    var input = document.getElementById(e.target.getAttribute("data-for"));
+    var current = clampLevel(input.value);
+    input.value = current ? Math.min(60, Math.max(1, current + Number(step))) : 1;
+    if (input === inBoth) { inMarc.value = input.value; inNicky.value = input.value; }
+    renderTonight();
+  });
   renderTonight();
+
+  /* ---------- Camp versus questing test ---------- */
+  var xpCamp = document.getElementById("xp-camp");
+  var xpQuest = document.getElementById("xp-quest");
+  var xpResult = document.getElementById("xp-result");
+  function showXp() {
+    var camp = parseInt(xpCamp.value, 10), quest = parseInt(xpQuest.value, 10);
+    if (isNaN(camp) || isNaN(quest)) { xpResult.textContent = "Enter both numbers to compare."; return; }
+    if (camp === quest) { xpResult.textContent = "It's a tie. Pick whichever is more fun."; return; }
+    var winner = camp > quest ? "The camp" : "Questing";
+    var low = Math.min(camp, quest);
+    var extra = low > 0 ? " by " + Math.round((Math.max(camp, quest) - low) / low * 100) + "%" : "";
+    xpResult.textContent = winner + " wins" + extra + ". Keep doing that.";
+  }
+  function syncXp() {
+    xpCamp.value = state.xp.camp != null ? state.xp.camp : "";
+    xpQuest.value = state.xp.quest != null ? state.xp.quest : "";
+    showXp();
+  }
+  [xpCamp, xpQuest].forEach(function (input) {
+    input.addEventListener("input", function () {
+      state.xp = { camp: xpCamp.value, quest: xpQuest.value };
+      save();
+      showXp();
+    });
+  });
+  syncXp();
 
   /* ---------- Session log ---------- */
   var FIELDS = [
     ["parked", "Parked / hearth"], ["next", "Next exact action"], ["missing", "Missing"],
-    ["gearMarc", "Marc gear"], ["gearNikki", "Nikki gear"], ["legacyMarc", "Legacy, Marc"], ["legacyNikki", "Legacy, Nikki"],
+    ["gearMarc", "Marc gear"], ["gearNicky", "Nicky gear"], ["legacyMarc", "Legacy, Marc"], ["legacyNicky", "Legacy, Nicky"],
     ["status", "Training / tent / bag"], ["route", "Duo test route"], ["time", "Time"], ["repeat", "Repeat?"],
     ["rested", "Rested before / after"], ["procs", "Ravager procs"],
   ];
@@ -231,14 +286,14 @@
   function prefillLog() {
     form.elements.date.value = new Date().toISOString().slice(0, 10);
     form.elements.marc.value = state.levels.marc || "";
-    form.elements.nikki.value = state.levels.nikki || "";
+    form.elements.nicky.value = state.levels.nicky || "";
   }
   function renderLog() {
     list.innerHTML = state.log.map(function (entry, i) {
       var rowsHtml = FIELDS.filter(function (f) { return entry[f[0]]; }).map(function (f) {
         return "<dt>" + f[1] + "</dt><dd>" + esc(entry[f[0]]) + "</dd>";
       }).join("");
-      return '<article class="block entry"><h3>' + esc(entry.date) + ' <small>Marc ' + esc(entry.marc || "?") + " · Nikki " + esc(entry.nikki || "?") + '</small><button type="button" class="link" data-del="' + i + '">Delete</button></h3><dl>' + rowsHtml + "</dl></article>";
+      return '<article class="block entry"><h3>' + esc(entry.date) + ' <small>Marc ' + esc(entry.marc || "?") + " · Nicky " + esc(entry.nicky || "?") + '</small><button type="button" class="link" data-del="' + i + '">Delete</button></h3><dl>' + rowsHtml + "</dl></article>";
     }).join("");
   }
   form.addEventListener("submit", function (e) {
@@ -247,7 +302,7 @@
     new FormData(form).forEach(function (v, k) { entry[k] = String(v).trim(); });
     state.log.unshift(entry);
     if (entry.marc) inMarc.value = entry.marc;
-    if (entry.nikki) inNikki.value = entry.nikki;
+    if (entry.nicky) inNicky.value = entry.nicky;
     form.reset();
     renderTonight();
     prefillLog();
@@ -280,13 +335,14 @@
     var file = e.target.files[0];
     if (!file) return;
     file.text().then(function (text) {
-      var data = JSON.parse(text);
+      var data = JSON.parse(text.replace(/nikki/g, "nicky").replace(/Nikki/g, "Nicky"));
       if (!data || typeof data.checks !== "object" || !Array.isArray(data.log)) throw new Error("bad file");
-      state = { levels: data.levels || { marc: "", nikki: "" }, checks: data.checks, log: data.log };
+      state = { levels: data.levels || { marc: "", nicky: "" }, checks: data.checks, log: data.log, xp: data.xp || {} };
       save();
       inMarc.value = state.levels.marc || "";
-      inNikki.value = state.levels.nikki || "";
+      inNicky.value = state.levels.nicky || "";
       syncChecks();
+      syncXp();
       renderTonight();
       prefillLog();
       renderLog();
@@ -352,4 +408,47 @@
   });
 
   route();
+
+  /* ---------- Starfield ---------- */
+  var canvas = document.getElementById("stars");
+  var ctx = canvas.getContext && canvas.getContext("2d");
+  if (ctx) {
+    var stars = [];
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var COLORS = ["255,255,255", "190,225,255", "255,215,240", "255,235,190"];
+    var drawn = 0;
+    function sizeStars() {
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      var count = Math.min(240, Math.round(window.innerWidth * window.innerHeight / 7000));
+      stars = [];
+      for (var i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+          r: (Math.random() < 0.08 ? 1.5 : 0.4 + Math.random() * 0.7) * dpr,
+          a: 0.25 + Math.random() * 0.7, p: Math.random() * 6.28, s: 0.3 + Math.random() * 1.1,
+          c: COLORS[Math.floor(Math.random() * COLORS.length)],
+        });
+      }
+    }
+    function drawStars(now) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(function (s) {
+        var alpha = still ? s.a : s.a * (0.65 + 0.35 * Math.sin(now / 1000 * s.s + s.p));
+        ctx.fillStyle = "rgba(" + s.c + "," + alpha.toFixed(3) + ")";
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, 6.2832);
+        ctx.fill();
+      });
+    }
+    function tick(now) {
+      if (!document.hidden && now - drawn > 66) { drawStars(now); drawn = now; }
+      requestAnimationFrame(tick);
+    }
+    window.addEventListener("resize", function () { sizeStars(); drawStars(performance.now()); });
+    sizeStars();
+    drawStars(0);
+    if (!still) requestAnimationFrame(tick);
+  }
 })();

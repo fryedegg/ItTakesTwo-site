@@ -455,5 +455,235 @@ window.SOURCES = {
    "label": "Wowhead: Warrior Voodoo Feathers chain",
    "url": "https://www.wowhead.com/forever/quest=8425/voodoo-feathers"
   }
+ },
+ "update": {
+  "1": {
+   "label": "Blizzard: meet the Skyborne (race, factions, classes)",
+   "url": "https://news.blizzard.com/en-us/article/24302071/wow"
+  },
+  "2": {
+   "label": "Warcraft Tavern: Skyborne guide",
+   "url": "https://www.warcrafttavern.com/forever/guides/skyborne/"
+  },
+  "3": {
+   "label": "Warcraft Tavern: Zephras Isle walkthrough",
+   "url": "https://www.warcrafttavern.com/forever/guides/zephras-isle-walkthrough/"
+  },
+  "4": {
+   "label": "Warcraft Wiki: Zephras Isle",
+   "url": "https://warcraft.wiki.gg/wiki/Zephras_Isle"
+  },
+  "5": {
+   "label": "Method: how to get to every starting zone (Skycutter)",
+   "url": "https://www.method.gg/wow-forever/how-to-get-to-all-starting-zones-in-wow-forever-and-best-starting-zones"
+  },
+  "6": {
+   "label": "Icy Veins: Forever shaman class quests",
+   "url": "https://www.icy-veins.com/wow-forever/shaman-class-quests"
+  },
+  "7": {
+   "label": "Icy Veins: Forever warrior class quests",
+   "url": "https://www.icy-veins.com/wow-forever/warrior-class-quests"
+  },
+  "8": {
+   "label": "Wowhead: The Skybreaker Bulwark (Skyborne-only warrior quest)",
+   "url": "https://www.wowhead.com/forever/quest=94003/the-skybreaker-bulwark"
+  },
+  "9": {
+   "label": "Wowhead: Wind Blessed (Skyborne racial)",
+   "url": "https://www.wowhead.com/forever/spell=1259710"
+  },
+  "10": {
+   "label": "Wowhead: Skysight (Windshaper racial)",
+   "url": "https://www.wowhead.com/forever/spell=1259686"
+  },
+  "11": {
+   "label": "Wowhead: Elemental Insight (Skyborne racial)",
+   "url": "https://www.wowhead.com/forever/spell=1259707"
+  },
+  "12": {
+   "label": "Wowhead: Walk on Air (Skyborne racial)",
+   "url": "https://www.wowhead.com/forever/spell=1259416"
+  },
+  "13": {
+   "label": "Mobalytics: Forever zone level ranges",
+   "url": "https://mobalytics.gg/wow-forever/guides/zone-map-level-ranges"
+  },
+  "14": {
+   "label": "Wowhead: Forever zones and level ranges",
+   "url": "https://www.wowhead.com/forever/zones"
+  },
+  "15": {
+   "label": "Warcraft Tavern: Undead Paladin",
+   "url": "https://www.warcrafttavern.com/forever/guides/undead-paladin/"
+  },
+  "16": {
+   "label": "Warcraft Wiki: Aramis Hammerhand",
+   "url": "https://warcraft.wiki.gg/wiki/Aramis_Hammerhand"
+  },
+  "17": {
+   "label": "Warcraft Wiki: Bandarion Keep",
+   "url": "https://warcraft.wiki.gg/wiki/Bandarion_Keep"
+  },
+  "18": {
+   "label": "Warcraft Wiki: A Second Home",
+   "url": "https://warcraft.wiki.gg/wiki/A_Second_Home"
+  },
+  "19": {
+   "label": "Warcraft Wiki: A Lesson in Divinity (7)",
+   "url": "https://warcraft.wiki.gg/wiki/A_Lesson_in_Divinity_(7)"
+  },
+  "20": {
+   "label": "Warcraft Wiki: Diplomatic Incident",
+   "url": "https://warcraft.wiki.gg/wiki/Diplomatic_Incident"
+  },
+  "21": {
+   "label": "Warcraft Wiki: Old Fire-Eye",
+   "url": "https://warcraft.wiki.gg/wiki/Old_Fire-Eye"
+  },
+  "22": {
+   "label": "Conquestcapped: Forever paladin weapon quest",
+   "url": "https://conquestcapped.com/guides/wow-forever/wow-forever-paladin-weapon-quest/"
+  },
+  "23": {
+   "label": "Wowhead: Wolfsbane",
+   "url": "https://www.wowhead.com/forever/item=267369"
+  },
+  "24": {
+   "label": "Wowhead: Protection paladin tank leveling tips",
+   "url": "https://www.wowhead.com/forever/guide/classes/paladin/protection/tank-leveling-tips"
+  },
+  "25": {
+   "label": "Wowhead: Protection paladin level 20 overview",
+   "url": "https://www.wowhead.com/forever/guide/classes/paladin/protection/level-20-tank-overview"
+  },
+  "26": {
+   "label": "Wowhead: Protection paladin level 30 overview",
+   "url": "https://www.wowhead.com/forever/guide/classes/paladin/protection/level-30-tank-overview"
+  },
+  "27": {
+   "label": "Warcraft Tavern: paladin leveling (abilities by level, beta)",
+   "url": "https://www.warcrafttavern.com/forever/guides/paladin-leveling/"
+  },
+  "28": {
+   "label": "Wowhead: Summon Warhorse",
+   "url": "https://www.wowhead.com/forever/spell=1279399/summon-warhorse"
+  },
+  "29": {
+   "label": "games.gg: Forever Tirisfal Glades route",
+   "url": "https://games.gg/world-of-warcraft/guides/wow-forever-tirisfal-glades/"
+  },
+  "30": {
+   "label": "Icy Veins: Forever professions overview",
+   "url": "https://www.icy-veins.com/wow-forever/professions-overview"
+  },
+  "31": {
+   "label": "Warcraft Tavern: Forever professions",
+   "url": "https://www.warcrafttavern.com/forever/guides/professions/"
+  },
+  "32": {
+   "label": "Icy Veins: Forever mining leveling guide",
+   "url": "https://www.icy-veins.com/wow-forever/mining-leveling-guide"
+  },
+  "33": {
+   "label": "Wowhead: Forever mining overview",
+   "url": "https://www.wowhead.com/forever/guide/professions/mining/overview-leveling"
+  },
+  "34": {
+   "label": "Icy Veins: Forever skinning leveling guide",
+   "url": "https://www.icy-veins.com/wow-forever/skinning-leveling-guide"
+  },
+  "35": {
+   "label": "Wowhead: Forever skinning overview",
+   "url": "https://www.wowhead.com/forever/guide/professions/skinning/overview-leveling"
+  },
+  "36": {
+   "label": "Icy Veins: Forever tailoring leveling guide",
+   "url": "https://www.icy-veins.com/wow-forever/tailoring-leveling-guide"
+  },
+  "37": {
+   "label": "Mobalytics: Forever tailoring guide",
+   "url": "https://mobalytics.gg/wow-forever/guides/tailoring-profession-guide"
+  },
+  "38": {
+   "label": "Icy Veins: Forever leatherworking leveling guide",
+   "url": "https://www.icy-veins.com/wow-forever/leatherworking-leveling-guide"
+  },
+  "39": {
+   "label": "Mobalytics: Forever leatherworking guide",
+   "url": "https://mobalytics.gg/wow-forever/guides/leatherworking-profession-guide"
+  },
+  "40": {
+   "label": "Wowhead: Forever leatherworking overview",
+   "url": "https://www.wowhead.com/forever/guide/professions/leatherworking-overview-trainer-locations-recipes"
+  },
+  "41": {
+   "label": "Wowhead: Pattern: Wisdom's Leather Belt",
+   "url": "https://www.wowhead.com/forever/item=252770/pattern-wisdoms-leather-belt"
+  },
+  "42": {
+   "label": "Wowhead: Camping 101: Leatherworking",
+   "url": "https://www.wowhead.com/forever/quest=97969/camping-101-leatherworking"
+  },
+  "43": {
+   "label": "Wowhead: Camping 101: Tailoring",
+   "url": "https://www.wowhead.com/forever/quest=97972/camping-101-tailoring"
+  },
+  "44": {
+   "label": "Icy Veins: Forever first aid",
+   "url": "https://www.icy-veins.com/wow-forever/first-aid"
+  },
+  "45": {
+   "label": "Wowhead: Forever first aid overview",
+   "url": "https://www.wowhead.com/forever/guide/professions/first-aid/overview"
+  },
+  "46": {
+   "label": "Icy Veins: Forever cooking leveling guide",
+   "url": "https://www.icy-veins.com/wow-forever/cooking-leveling-guide"
+  },
+  "47": {
+   "label": "Wowhead: Forever cooking overview",
+   "url": "https://www.wowhead.com/forever/guide/professions/cooking/overview-leveling"
+  },
+  "48": {
+   "label": "Wowhead: Well Fed XP Boost",
+   "url": "https://www.wowhead.com/forever/spell=1243969"
+  },
+  "49": {
+   "label": "Icy Veins: Forever fishing leveling guide",
+   "url": "https://www.icy-veins.com/wow-forever/fishing-leveling-guide"
+  },
+  "50": {
+   "label": "Wowhead: Forever fishing overview",
+   "url": "https://www.wowhead.com/forever/guide/professions/fishing/overview-leveling"
+  },
+  "51": {
+   "label": "Wowhead: camping overview and unlocks",
+   "url": "https://www.wowhead.com/forever/guide/camping-overview-unlock-rewards"
+  },
+  "52": {
+   "label": "Wowhead: Pattern: Mystic Medium Armor Kit",
+   "url": "https://www.wowhead.com/forever/item=252783/pattern-mystic-medium-armor-kit"
+  },
+  "53": {
+   "label": "Wowhead: Beasts of Thunder Ridge",
+   "url": "https://www.wowhead.com/forever/quest=96875/beasts-of-thunder-ridge"
+  },
+  "54": {
+   "label": "Blizzard Watch: First Aid's new recipes in Forever",
+   "url": "https://blizzardwatch.com/2026/10/16/first-aid-getting-new-recipes-updates-world-warcraft-forever/"
+  },
+  "55": {
+   "label": "Icy Veins: Zephras Isle without playing Skyborne",
+   "url": "https://www.icy-veins.com/wow-forever/news/wow-forever-players-can-experience-zephras-isle-without-playing-skyborne/"
+  },
+  "56": {
+   "label": "Wowhead: Charred Wolf Meat (no XP buff)",
+   "url": "https://www.wowhead.com/forever/item=2679"
+  },
+  "57": {
+   "label": "Wowhead Forever database (mob levels, spawns, quest rewards, boss loot)",
+   "url": "https://www.wowhead.com/forever"
+  }
  }
 };

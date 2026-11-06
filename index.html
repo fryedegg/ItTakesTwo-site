@@ -6,7 +6,11 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#07071a">
 <title>ItTakesTwo</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23090920'/><circle cx='11' cy='16' r='5' fill='%236ee7ff'/><circle cx='22' cy='16' r='4' fill='%23ff8ad8'/></svg>">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,11 +24,13 @@
   <nav aria-label="Sections">
     <a href="#tonight">Tonight</a>
     <a href="#route">Route</a>
+    <a href="#prof">Professions</a>
     <a href="#xp">XP &amp; Legacy</a>
     <a href="#ravager">Ravager</a>
     <a href="#training">Training</a>
     <a href="#dungeons">Dungeons</a>
     <a href="#gear">Gear</a>
+    <a href="#pala">Paladin</a>
     <a href="#log">Session log</a>
     <a href="#changes">Revision 2</a>
     <a href="#sources">Sources</a>
@@ -38,9 +44,9 @@
 <section id="tonight" class="view" data-src="r">
   <div class="hero hero-main">
     <div>
-      <p class="kicker">World of Warcraft: Forever · 1–60 · Revision 2</p>
+      <p class="kicker"><span class="nw">World of Warcraft: Forever</span> <span class="nw">· Levels 1–60</span></p>
       <h1>Tank together. Heal together. Make the evening count.</h1>
-      <p class="lede">Marc, Troll Warrior. Nicky, Tauren Shaman. Two stars, one orbit. Set your levels and see tonight's plan.</p>
+      <p class="lede">Marc, Troll Warrior. Nicky, Windshaper Skyborne Shaman. Two stars, one orbit. Set your levels and see tonight's plan.</p>
     </div>
     <div class="orbit" aria-hidden="true"><span class="ring"></span><span class="spin"><i class="star marc"></i><i class="star nicky"></i></span></div>
   </div>
@@ -91,16 +97,17 @@
   <article class="block" id="b-launch" data-p="R4">
     <h2>Launch day</h2>
     <ul class="plain">
-      <li><strong>Opens Nov 4, 3:00 pm Pacific (23:00 UTC).</strong> Expect crowded starting zones on day one. Levelling apart to 10 avoids fighting for tags as a pair. {F} [1,27]</li>
+      <li><strong>Opened Nov 4, 3:00 pm Pacific (23:00 UTC).</strong> Expect crowded starting zones in launch week. {F} [1,27]</li>
       <li><strong>No realm list.</strong> You choose a ruleset (Normal, PvP, RP, RP-PvP), and each ruleset is one world split by layering. <strong>Both of you must pick the same ruleset</strong>; transfers between rulesets are not offered. {F} [27]</li>
       <li><strong>No group finder and no summoning stones.</strong> The LFG board exists, but someone walks to every entrance. Ask recruits to meet at the door. {F} [28]</li>
+      <li data-src="u"><strong>Skyborne racials (Nicky):</strong> Wind Blessed (+2% haste), Elemental Insight (+5% damage to elementals), Skysight (+15% movement speed for 30 seconds, Horde only) and Walk on Air (a 10-second glide you can steer). The live tooltips differ slightly from Blizzard's pre-launch numbers. {F} [9,10,11,12]</li>
       <li><strong>Troll racial, Rapid Regeneration:</strong> a 6-second channel that heals 50% of health, broken by damage or movement. It is free downtime for Marc between pulls and saves Nicky mana. Bow and Throwing specializations are gone. {F} [29,30]</li>
     </ul>
   </article>
 
   <article class="block" id="b-tests">
     <h2>Day-one tests for the cleave plan</h2>
-    <p>Here's what the sources and Marc's experience say so far. Forever hasn't launched, so each one still gets a quick check on the first real pull.</p>
+    <p>Forever is live, but none of these has been tested yet. Ravager needs level 37, so each one gets a quick check on Marc's first real spins. Here's what the sources and Marc's experience say until then.</p>
     <div class="qa">
       <h3>Does Thunder Clap, a stance change or a shout cancel the spin?</h3>
       <p class="verdict open">No concrete answer found</p>
@@ -158,11 +165,12 @@
     </ul>
     <p class="muted">Time estimates are budgets, not measured Forever clear times. Queue, travel, launch congestion, skill and group composition can change them. If a group is not forming promptly, keep questing while recruiting.</p>
     <h3>Before the first shared evening</h3>
+    <div class="fix">Update, Nov 5: you're already together on Zephras Isle. Finish the island to about 12, with Nicky's Call of Earth and Call of Fire done there, then take the Skycutter to Mulgore and head for the Crossroads. <a href="#route/r-1-14">Details</a></div>
     <p>Your races begin far apart. Recommended: finish racial starter areas through roughly 10 separately, with Nicky completing her Tauren Earth quest before leaving Mulgore. Meet at Crossroads. Moving one character earlier is possible, but the travel and different class quests make it less efficient.</p>
     <p>Acquire flight paths in Thunder Bluff, Crossroads, Ratchet and Orgrimmar when your route passes them. Later add Camp Taurajo, Sun Rock Retreat, Splintertree/Zoram'gar, Undercity and Tarren Mill. Set your hearth to the current quest hub and update it when changing regions.</p>
   </article>
 
-  <p class="muted evidence">Names in the original PDF still read "Nikki". Most sources are beta-era (level capped at 30 for most of testing). Anything above level 30 is beta data at best; nobody has launch-tested it. See the <a href="#changes/b-tags">evidence tags</a>. <a href="guide/Horde_Duo_Leveling_Guide_1-60_Rev2_Combined.pdf" download>Download the full PDF</a>.</p>
+  <p class="muted evidence">The original PDF still says "Nikki" and plans her as a Tauren. Most sources are beta-era (level capped at 30 for most of testing). Anything above level 30 is beta data at best; nobody has launch-tested it. See the <a href="#changes/b-tags">evidence tags</a>. <a href="guide/Horde_Duo_Leveling_Guide_1-60_Rev2_Combined.pdf" download>Download the full PDF</a>.</p>
 </section>
 
 <!-- ROUTE -->
@@ -180,6 +188,7 @@
 
   <article class="block" id="r-1-14" data-p="7">
     <h2>Levels 1–14: meet, unlock, prepare</h2>
+    <div class="fix" data-src="u"><strong>Update, Nov 5:</strong> you both started on Zephras Isle, and Nicky is a Windshaper Skyborne, not a Tauren. Quest the island together to about 12 (Thendal, Shen'dar Village, Falaath, Valanaar, then the Shrine of Akir), then take the Skycutter from Valanaar's westernmost dock (57.9, 80.9; boats about every 5 minutes) to the cliffs south of Skywatcher Plateau in Mulgore. Nicky's Earth and Fire totem quests are on the island. Some island quests may be Skyborne-only for Marc. {V} Marc's Defensive Stance quest is on the mainland, because the island's warrior quest is Skyborne-only. The original text below still describes separate Durotar and Mulgore starts. {F} [3,5,6,7,8]</div>
     <h3>1–9 · Durotar and Mulgore</h3>
     <p><strong>Marc:</strong> Valley of Trials → Sen'jin / Razor Hill circuits. <strong>Nicky:</strong> Camp Narache → Bloodhoof Village. Finish the local kill-and-collection bundles together within each area; prioritize compact circuits over isolated long deliveries.</p>
     <p><strong>At 4:</strong> Nicky completes Call of Earth with Seer Ravenfeather before leaving her starter region. Marc trains Charge/Rend. Around 5, learn professions and Cooking, unlock camps, and get Nicky to Leatherworking 20 for the tent. [4,8,11]</p>
@@ -465,7 +474,7 @@
         <tr><td>After the drop</td><td>Equip, test the proc on a modest outdoor pack, and store your sword-and-board swap where you can reach it instantly.</td></tr>
       </tbody>
     </table></div>
-    <blockquote>"Tank + healer LF 3 DPS, SM Armory / Herod runs. Farming Ravager for the Warrior; please agree loot before joining. Doing any needed quest objectives on the first pass."<button class="copy" type="button">Copy</button></blockquote>
+    <blockquote><span class="copy-text">"Tank + healer LF 3 DPS, SM Armory / Herod runs. Farming Ravager for the Warrior; please agree loot before joining. Doing any needed quest objectives on the first pass."</span><button class="copy" type="button">Copy</button></blockquote>
   </article>
 
   <article class="block" id="b-spec" data-p="R6">
@@ -588,7 +597,7 @@
     </table></div>
     <h3>Healing controls before the first dungeon</h3>
     <p>Show both players' health, mana, removable debuffs and enemy casts clearly. A friendly mouseover heal is useful. Test it in the open world. An out-of-range valid mouseover does not automatically fall back to the tank. [52]</p>
-    <blockquote class="code">/cast [@mouseover,help,nodead][help,nodead][@player] Healing Wave<button class="copy" type="button">Copy</button></blockquote>
+    <blockquote class="code"><span class="copy-text">/cast [@mouseover,help,nodead][help,nodead][@player] Healing Wave</span><button class="copy" type="button">Copy</button></blockquote>
     <p>Use Healing Wave as the steady heal; keep Lesser Healing Wave available for urgency. Later use Riptide and Chain Heal where they fit the actual damage pattern. Nicky can contribute damage, but preserve enough mana and cast time to survive the next pull.</p>
     <p><strong>Totem slot discipline:</strong> one active totem per element. Tremor replaces Strength of Earth; Mana Tide occupies the water slot; Grounding competes with Windfury in air. Replace the regular buff afterward. Do not treat every enemy spell as interruptible or groundable.</p>
     <p><strong>Your two-word callouts:</strong> "mana stop", "big pull", "interrupt mine", "shield swapping". Decide who calls a reset. Preventing one uncontrolled pull saves more time than a small paper DPS improvement.</p>
@@ -914,6 +923,173 @@
   </article>
 </section>
 
+<!-- PROFESSIONS -->
+<section id="prof" class="view" data-src="u" hidden>
+  <div class="hero"><p class="kicker">Gathering, crafting and the three everyone takes</p><h1>Professions along the way</h1>
+  <p class="lede">Which trainer, which recipe and where to gather, level by level, for both of you and the Paladin. Forever changed a lot here, so these come from Forever guides and Wowhead's Forever data.</p></div>
+  <article class="block prof-card" id="pr-who">
+    <h2>Who takes what</h2>
+    <ul class="plain">
+      <li><strong class="c-marc">Marc:</strong> Mining and Tailoring, plus First Aid, Cooking and Fishing.</li>
+      <li><strong class="c-nicky">Nicky:</strong> Leatherworking and Skinning, plus First Aid, Cooking and Fishing.</li>
+      <li><strong class="c-pala">The Paladin:</strong> Mining and Skinning, plus the same three. <a href="#pala">His tab</a></li>
+    </ul>
+    <p>Every profession you two take has a trainer on Zephras Isle, in Shen'dar Village and Valanaar. Mining and Skinning go all the way to Artisan there; Tailoring, Leatherworking and the three secondaries stop at Journeyman, and Nicky's Leatherworking past 75 needs Emerii Tallgust in Valanaar. Thendal Village has no profession trainers. {F} [3,32,34,36,38]</p>
+    <p><strong>Your crafts help each other:</strong> Nicky's Camp Tent builds rested XP for both of you, Marc's Faction Banner gives Nicky Spirit while you rest, Nicky's Medium Armor Kits go on Marc's tank gear, and Marc's cloth feeds your bandages. {F} [37,40,42,43,52]</p>
+    <p><strong>Legacy:</strong> each crafting profession earns 1 Legacy Point at skill 150, 225 and 300, the first time on each account. Mining and Skinning have no Legacy challenges. {F} [33,40]</p>
+    <p class="muted">Your level-by-level profession steps also show on Tonight, in each of your cards.</p>
+  </article>
+
+  <article class="block" id="pr-ranks">
+    <h2>Ranks, skill and character level</h2>
+    <div class="scroll"><table class="ladder">
+      <thead><tr><th>Rank</th><th>Skill cap</th><th>Train at skill</th><th>Character level</th></tr></thead>
+      <tbody>
+        <tr><td>Apprentice</td><td>75</td><td>Any</td><td>Any. Forever removed the old level 5 rule for Leatherworking.</td></tr>
+        <tr><td>Journeyman</td><td>150</td><td>50</td><td>Crafting: 10. Gathering: none, per Icy Veins. {V}</td></tr>
+        <tr><td>Expert</td><td>225</td><td>125</td><td>Crafting: 20. Gathering: 10 per Icy Veins, 20 per Warcraft Tavern. {V} First Aid and Cooking use a book; Fishing's book needs level 20.</td></tr>
+        <tr><td>Artisan</td><td>300</td><td>200 (225 for the three secondaries)</td><td>Crafting: 35. Gathering: 25 per Icy Veins, 35 per Warcraft Tavern. {V} The secondaries need a quest at 35.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Mining and Skinning ranks cost 10c, 5s, 50s and 5g. Train the next rank before you reach the cap: crafting at the cap gives no skill. {F} [30,31,33,36,46]</p>
+  </article>
+
+  <article class="block prof-card" id="pr-mining">
+    <h2>Mining <span class="who"><i class="m">Marc</i><i class="p">Paladin</i></span></h2>
+    <div data-steps="Mining"></div>
+    <h3>Ore by skill</h3>
+    <p>Copper 1, tin 65, silver 75, iron 125, gold 155, mithril 175, truesilver and dark iron 230, small thorium 245, rich thorium 275. Forever adds Poor Copper Veins (skill 1) in every starting zone, and many more nodes overall, so skill keeps up with levelling. Nodes can also give scarce materials such as Pyrite and Bauxite. {F} [32,33]</p>
+    <h3>Trainers</h3>
+    <div data-trainers="Mining"></div>
+  </article>
+
+  <article class="block prof-card" id="pr-skinning">
+    <h2>Skinning <span class="who"><i class="n">Nicky</i><i class="p">Paladin</i></span></h2>
+    <div data-steps="Skinning"></div>
+    <h3>Skill per mob level</h3>
+    <p>Mobs up to level 10 need skill 1. Levels 11–20 need (level − 10) × 10, so a level 17 mob needs 70. From level 21 it's level × 5, so a level 42 mob needs 210. Save Pristine Leather (new, scarce): Nicky's Wisdom's Leather healing set needs it. {F} [34,35]</p>
+    <h3>Trainers</h3>
+    <div data-trainers="Skinning"></div>
+  </article>
+
+  <article class="block prof-card" id="pr-tailoring">
+    <h2>Tailoring <span class="who"><i class="m">Marc</i></span></h2>
+    <p>Tailoring makes nothing a warrior tank wants to wear: Forever's tailored cloaks carry caster stats, and the new healer cloth binds to the tailor, so Marc can't make it for Nicky. Its value is bags, reagent bags, gold and the Faction Banner. {F} [36,37]</p>
+    <div data-steps="Tailoring"></div>
+    <h3>Bags you can make</h3>
+    <p>Linen Bag 6 slots (skill 5), Woolen Bag 8 (50), Small Silk Pack 10 (125), Mageweave Bag 12 (190), Runecloth Bag 14 (215). Reagent bags go in the new reagent slot: Linen 6 (5), Woolen 8 (70), Silk 10 (125). {F} [37]</p>
+    <h3>Trainers and pattern vendors</h3>
+    <div data-trainers="Tailoring"></div>
+  </article>
+
+  <article class="block prof-card" id="pr-leather">
+    <h2>Leatherworking <span class="who"><i class="n">Nicky</i></span></h2>
+    <div data-steps="Leatherworking"></div>
+    <h3>Wisdom's Leather: Nicky's healing set</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Piece</th><th>Skill</th><th>Wear at</th><th>Stats</th></tr></thead>
+      <tbody>
+        <tr><td>Belt</td><td>60</td><td>12</td><td>+3 Sta, +4 Int, +8 healing</td></tr>
+        <tr><td>Gloves</td><td>75</td><td>15</td><td>+10 healing</td></tr>
+        <tr><td>Boots</td><td>85</td><td>17</td><td>+11 healing</td></tr>
+        <tr><td>Hood</td><td>100</td><td>20</td><td>+17 healing</td></tr>
+        <tr><td>Tunic</td><td>110</td><td>22</td><td>+6 Int, +6 Spi, +18 healing</td></tr>
+        <tr><td>Leggings</td><td>125</td><td>25</td><td>+7 Int, +7 Spi, +21 healing</td></tr>
+        <tr><td>Helm</td><td>125</td><td>25</td><td>+13 Sta, +21 healing</td></tr>
+      </tbody>
+    </table></div>
+    <p>Every piece binds when picked up, so Nicky crafts her own. Patterns cost 30 Merchant's Favor each from Pawani at the Durotar supply camp outside the Crossroads; the gloves, hood and leggings patterns can also drop. Stormrider's and Totemic are the other shaman sets, but they aren't healing gear. {F} [39,40,41]</p>
+    <h3>Trainers and supplies</h3>
+    <div data-trainers="Leatherworking"></div>
+  </article>
+
+  <article class="block prof-card" id="pr-firstaid">
+    <h2>First Aid <span class="who"><i class="m">Marc</i><i class="n">Nicky</i><i class="p">Paladin</i></span></h2>
+    <div data-steps="First Aid"></div>
+    <p>Bandages: linen 1–40, heavy linen 40–80, wool 80–115, heavy wool 115–150, silk 150–180, heavy silk 180–210, mageweave 210–240, heavy mageweave 240–260, runecloth 260–290, heavy runecloth 290–300. New in Forever: healing potions are First Aid recipes, poultices cure diseases and tourniquets stop bleeds. {F} [44,45,54]</p>
+    <h3>Trainers</h3>
+    <div data-trainers="First Aid"></div>
+  </article>
+
+  <article class="block prof-card" id="pr-cooking">
+    <h2>Cooking <span class="who"><i class="m">Marc</i><i class="n">Nicky</i><i class="p">Paladin</i></span></h2>
+    <div data-steps="Cooking"></div>
+    <p><strong>Well Fed XP Boost:</strong> eat for 10 seconds and kills give 5% more XP for 15 minutes. Quest rewards don't get the bonus. Most cooked food has it; Charred Wolf Meat, Boiled Clams and Dig Rat Stew don't, so skip them. {F} [46,47,48,56]</p>
+    <p>Cooking also builds your campfire: Basic Campfire Kit (3 camp items), then Journeyman (5) and Expert (10). {F} [51]</p>
+    <h3>Trainers and suppliers</h3>
+    <div data-trainers="Cooking"></div>
+  </article>
+
+  <article class="block prof-card" id="pr-fishing">
+    <h2>Fishing <span class="who"><i class="m">Marc</i><i class="n">Nicky</i><i class="p">Paladin</i></span></h2>
+    <div data-steps="Fishing"></div>
+    <p>Skill comes from successful catches, not from the zone, so you can level it in starter water. The Stranglethorn Fishing Extravaganza runs every Sunday, 2–4 pm server time; in Forever the first 50 to turn in 40 Speckled Tastyfish win. {F} [49,50]</p>
+    <h3>Trainers and suppliers</h3>
+    <div data-trainers="Fishing"></div>
+  </article>
+</section>
+
+<!-- SOLO PALADIN -->
+<section id="pala" class="view" data-src="u" hidden>
+  <div class="hero"><p class="kicker">Marc's alt · solo</p><h1>Solo orbit: the Undead Paladin</h1>
+  <p class="lede">Marc's Undead Paladin tanks his own way to 60. Set his level to see tonight's route, grind spots, loot and profession steps.</p></div>
+  <div class="panel picker pala-picker">
+    <div class="lvl pala">
+      <label for="lvl-pala">Paladin</label>
+      <div class="stepper">
+        <button type="button" data-step="-1" data-for="lvl-pala" aria-label="Paladin level down">−</button>
+        <input id="lvl-pala" type="number" min="1" max="60" inputmode="numeric" placeholder="–">
+        <button type="button" data-step="1" data-for="lvl-pala" aria-label="Paladin level up">+</button>
+      </div>
+    </div>
+  </div>
+  <div id="pala-out"></div>
+  <article class="block" id="pa-route">
+    <h2>Route by level</h2>
+    <div class="scroll"><table id="pala-route"><thead><tr><th>Level</th><th>Where</th><th>What matters</th></tr></thead><tbody></tbody></table></div>
+    <p class="muted">Forever's only Horde paladins are Undead; they start in Deathknell. Past level 30 the zones follow Wowhead's Forever level ranges, because no tested solo route exists yet. [13,14,15,29]</p>
+  </article>
+
+  <article class="block" id="pa-play">
+    <h2>How he levels</h2>
+    <ul class="plain">
+      <li><strong>Spec:</strong> Protection. Wowhead calls it a very viable, if not the best, levelling spec: strong on several mobs, slow on one, and short on mana against casters because it has no interrupt. {F} [24]</li>
+      <li><strong>Talents:</strong> Pursuit of Justice 2/2 (Retribution) by 21, Benediction before Deflection, and Shield Specialization over Sanctified Judgement for packs. Respeccing at 30 for Holy Shield slows levelling. {F} [24]</li>
+      <li><strong>Pull:</strong> Righteous Fury and Retribution Aura up, then keep Seal of Fury active, Judgement on cooldown (it's off the global cooldown now), Consecration if mana allows, Holy Strike, Exorcism on undead and demons, Hammer of Wrath to finish. Pair Judgement with Holy Strike to save mana. {F} [24]</li>
+      <li><strong>Weapon:</strong> before 20, a two-hander in the open world beats sword and board. Skip spell power weapons until 20: they carry a melee damage penalty of about 25%. {F} [25]</li>
+      <li><strong>Quest, don't grind:</strong> Forever weakened paladin AoE (Retribution Aura and Consecration), so cleave farming at 20–30 only works when you're well overgeared. {F} [24]</li>
+      <li><strong>Undead racials:</strong> Will of the Forsaken breaks charm, fear and sleep; Cannibalize now restores 7% health and mana every 2 seconds for 10 seconds. {F} [15]</li>
+    </ul>
+  </article>
+
+  <article class="block" id="pa-quests">
+    <h2>Class quests</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Level</th><th>Quest</th><th>Where</th><th>Reward</th></tr></thead>
+      <tbody>
+        <tr><td>1–4</td><td>A Difficult Path through Coming to Terms, then Continue Your Training</td><td>Aramis Hammerhand, Deathknell chapel (31.0, 66.2)</td><td>Sends you to Shari Stilwell in Brill</td></tr>
+        <tr><td>8</td><td>A Second Home</td><td>Shari Stilwell, Brill (60.2, 52.6)</td><td>Opens Bandarion Keep</td></tr>
+        <tr><td>11</td><td>Murlocs at the Gates, Touring the Grounds, The Tarnished, Making Repairs</td><td>Bandarion Keep, Whispering Wood (about 22, 45)</td><td>The keep's class hub chain</td></tr>
+        <tr><td>12</td><td>A Token of Good Faith, then A Lesson in Divinity (7 parts)</td><td>Danitha Morr, Bandarion Keep (22.0, 44.6); Tanis Alderwood, Undercity</td><td>Redemption</td></tr>
+        <tr><td>18–26</td><td>Diplomatic Incident through The Windshaper's Wrath, then Old Fire-Eye</td><td>Danitha Morr; Trevan Rol at The Sepulcher (43.4, 41)</td><td>Wolfsbane: 2H sword, 25.6 DPS, +9 Sta, +10 Int, extra damage to wolves and worgen</td></tr>
+        <tr><td>40</td><td>Class warhorse</td><td>Not yet documented for Horde</td><td>Summon Warhorse {V}</td></tr>
+        <tr><td>60</td><td>Epic Charger chain</td><td>"The path of Retribution"</td><td>Charger {V}</td></tr>
+      </tbody>
+    </table></div>
+    <p>Wolfsbane needs Whitestone Oak Lumber from Goblin Woodcarvers in Deadmines and an Enchanted Silver Ingot from Arugal's room in Shadowfang Keep, so plan a group for those steps. Old Fire-Eye is a level 25 elite who takes 99% less damage until the Moonsilver Blade strips that; try him at 22–24. Train Two-Handed Swords from Archibald in Undercity first. The chain's Moonsilver Blade (2H, +7 Stamina, +7 Intellect) is usable before Wolfsbane. {F} [16,17,18,19,20,21,22,23]</p>
+    <p class="muted">Alliance-only, so not for him: The Tome of Divinity, Verigan's Fist and the Cloak of the Divine Storm. {F} [26]</p>
+  </article>
+
+  <article class="block" id="pa-trainers">
+    <h2>Paladin trainers</h2>
+    <div data-trainers="Paladin"></div>
+    <h3>Mining and Skinning near his start</h3>
+    <div data-trainers="Mining" data-zones="85,1497,130"></div>
+    <div data-trainers="Skinning" data-zones="85,1497,130"></div>
+    <p class="muted">All his profession steps: <a href="#prof">Professions</a>.</p>
+  </article>
+</section>
+
 <!-- SESSION LOG -->
 <section id="log" class="view" hidden>
   <div class="hero"><p class="kicker">Page 28, R9</p><h1>Session log</h1>
@@ -924,18 +1100,23 @@
     <label>Nicky level <input name="nicky" type="number" min="1" max="60"></label>
     <label class="wide">Where parked / hearth <input name="parked"></label>
     <label class="wide">Next exact action <input name="next"></label>
-    <label class="wide">Quests / prerequisites missing <input name="missing"></label>
-    <label class="wide">Marc gear target / obtained <input name="gearMarc"></label>
-    <label class="wide">Nicky gear target / obtained <input name="gearNicky"></label>
-    <label>Legacy: Marc account <input name="legacyMarc"></label>
-    <label>Legacy: Nicky account <input name="legacyNicky"></label>
-    <label class="wide">Training / tent / bag status <input name="status"></label>
-    <label>Duo test route <input name="route"></label>
-    <label>Time <input name="time"></label>
-    <label>Repeat? <input name="repeat"></label>
-    <label>Rested before / after <input name="rested"></label>
-    <label>Ravager procs counted <input name="procs"></label>
-    <div class="wide actions"><button type="submit">Save entry</button></div>
+    <details class="wide more">
+      <summary>More details <span class="muted">(optional)</span></summary>
+      <div class="form">
+        <label class="wide">Quests / prerequisites missing <input name="missing"></label>
+        <label class="wide">Marc gear target / obtained <input name="gearMarc"></label>
+        <label class="wide">Nicky gear target / obtained <input name="gearNicky"></label>
+        <label>Legacy: Marc account <input name="legacyMarc"></label>
+        <label>Legacy: Nicky account <input name="legacyNicky"></label>
+        <label class="wide">Training / tent / bag status <input name="status"></label>
+        <label>Duo test route <input name="route"></label>
+        <label>Time <input name="time"></label>
+        <label>Repeat? <input name="repeat"></label>
+        <label>Rested before / after <input name="rested"></label>
+        <label>Ravager procs counted <input name="procs"></label>
+      </div>
+    </details>
+    <div class="wide actions"><button type="submit">Save entry</button><span class="muted" id="log-note" role="status"></span></div>
   </form>
   <div id="log-list"></div>
   <article class="block" id="b-backup">
@@ -943,7 +1124,7 @@
     <p>Your levels, checkmarks and log entries are saved in this browser only. To copy them to another device, or to the other person's browser, save a backup file and restore it there. A restore replaces what's saved in the browser you restore into.</p>
     <div class="actions">
       <button id="backup" type="button">Save backup file</button>
-      <label class="button">Restore from file<input id="restore" type="file" accept="application/json" hidden></label>
+      <label class="button">Restore from file<input id="restore" class="vh" type="file" accept="application/json"></label>
     </div>
     <p class="muted" id="backup-note" role="status"></p>
   </article>
@@ -997,8 +1178,8 @@
 
 <!-- SOURCES -->
 <section id="sources" class="view" hidden>
-  <div class="hero"><p class="kicker">Checked November 2, 2026</p><h1>Sources</h1>
-  <p class="lede">The guide has two numbered lists. Numbers in Revision 2 sections link to the first list, everything else to the second. A source being published under "Forever" does not mean every entry was tested in Forever.</p></div>
+  <div class="hero"><p class="kicker">Checked November 2 and 5, 2026</p><h1>Sources</h1>
+  <p class="lede">The guide has three numbered lists. Numbers in Revision 2 sections link to the first, the November 5 additions (Skyborne start, Paladin, Professions) to the third, and everything else to the second. A source being published under "Forever" does not mean every entry was tested in Forever.</p></div>
   <article class="block" id="s-rev">
     <h2>Revision 2 sources</h2>
     <p class="muted">Several key guide sites (Icy Veins, Warcraft Tavern, Wowhead, Mobalytics) couldn't be opened directly during this check, so facts were drawn from their published summaries and from aggregator sites. Treat single-source items as provisional.</p>
@@ -1007,6 +1188,11 @@
   <article class="block" id="s-orig">
     <h2>Original research links</h2>
     <ol class="srclist" id="src-original"></ol>
+  </article>
+  <article class="block" id="s-update" data-src="u">
+    <h2>Update sources (November 5)</h2>
+    <p class="muted">For the Skyborne start, the Paladin tab and Professions. Grind spots and loot upgrades on Tonight come from Wowhead's Forever database (source 57), read on November 5.</p>
+    <ol class="srclist" id="src-update"></ol>
   </article>
   <article class="block" id="s-notes" data-p="31">
     <h2>Verification and coverage notes</h2>
@@ -1020,6 +1206,7 @@
 
 <script src="sources.js"></script>
 <script src="data.js"></script>
+<script src="levels.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

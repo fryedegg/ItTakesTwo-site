@@ -1,0 +1,13 @@
+{
+  "name": "ItTakesTwo",
+  "short_name": "ItTakesTwo",
+  "description": "Horde duo leveling guide for World of Warcraft: Forever.",
+  "start_url": "./#tonight",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07071a",
+  "theme_color": "#07071a",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
